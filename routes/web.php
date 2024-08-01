@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
@@ -23,15 +24,22 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-// Profile edit
-// Route::resource('/profile', ProfileController::class);
 
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard', [
+            'title' => 'Dashboard'
+        ]);
+    })->name('dashboard');
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    // Profile edit
+    Route::get('/profile', [AuthController::class, 'profile']);
 
-// Post
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+});
 
 
 // Admin
@@ -43,7 +51,6 @@ Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('registerPost');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
-
 
 
 

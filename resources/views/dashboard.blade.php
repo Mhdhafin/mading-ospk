@@ -9,38 +9,14 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="relative bg-slate-200 overflow-hidden max-h-screen">
-    <header class="fixed right-0 top-0 left-60 bg-white py-3 px-4 h-16">
+<body class="relative bg-white overflow-hidden max-h-screen">
+    <header class="fixed right-0 top-0 left-60 bg-slate-200 py-3 px-4 h-16">
         <div class="max-w-4xl mx-auto">
-            <div class="flex items-center justify-between">
-                <div>
-                    <button type="button"
-                        class="flex items-center focus:outline-none rounded-lg text-gray-600 hover:text-slate-500 focus:text-slate-500 font-semibold p-2 border border-transparent hover:border-slate-300 focus:border-slate-300 transition">
-                        <span
-                            class="inline-flex items-center justify-center w-6 h-6 text-gray-600 text-xs rounded bg-white transition mr-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
-                                class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                            </svg>
-                        </span>
-                        <span class="text-sm">Archive</span>
-                    </button>
-                </div>
+            <div class="flex mt-1 items-center justify-between">
+
                 <div class="text-lg font-bold">Today's Plan</div>
                 <div>
-                    <button type="button"
-                        class="flex items-center focus:outline-none rounded-lg text-gray-600 hover:text-slate-500 focus:text-slate-500 font-semibold p-2 border border-transparent hover:border-slate-300 focus:border-slate-300 transition">
-                        <span class="text-sm">This week</span>
-                        <span
-                            class="inline-flex items-center justify-center w-6 h-6 text-gray-600 text-xs rounded bg-white transition ml-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
-                                class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                            </svg>
-                        </span>
-                    </button>
+                    <img src="./assets/img/profile.jpg" class="h-8 w-8 rounded-full" alt="">
                 </div>
             </div>
         </div>
@@ -56,7 +32,7 @@
                 <div class="p-4">
                     <ul class="space-y-1">
                         <li>
-                            <a href="javascript:void(0)"
+                            <a href="/"
                                 class="flex items-center bg-slate-300  rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                     fill="currentColor" class="text-lg mr-4" viewBox="0 0 16 16">
@@ -72,14 +48,10 @@
                 </div>
             </div>
             <div class="p-4">
-                <button type="button"
+                <button  type="button"
                     class="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
-                        class="" viewBox="0 0 16 16">
-                        <path
-                            d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                    </svg>
-                </button> <span class="font-bold text-sm ml-2">Logout</span>
+                    <a href="{{ route('logout') }}" class="font-bold text-sm ">Logout</a>
+                </button>
             </div>
         </div>
     </aside>
@@ -87,7 +59,7 @@
     <main class="ml-60 pt-16 max-h-screen overflow-auto">
         <div class="px-6 py-8">
             <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-3xl p-8 mb-5">
+                {{-- <div class="bg-white rounded-3xl p-8 mb-5">
                     <h1 class="text-3xl font-bold mb-10">Messaging ID framework development for the marketing branch
                     </h1>
                     <div class="flex items-center justify-between">
@@ -206,7 +178,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </main>

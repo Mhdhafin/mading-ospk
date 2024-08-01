@@ -23,8 +23,13 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('dashboard');
+            }else{
             $request->session()->regenerate();
             return redirect()->intended('/');
+            }
         } else {
             return back()->with('error', 'Username or Password Invalid');
         }
@@ -49,5 +54,19 @@ class AuthController extends Controller
         User::create($validator);
 
         return redirect()->back()->with('success', 'Create Register Succesfully');
+    }
+    public function logout(Request $request)
+    {
+
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        return redirect()->route('login');
+    }
+
+    public function profile()
+    {
+        return view('profile');
     }
 }

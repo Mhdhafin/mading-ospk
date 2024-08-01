@@ -12,11 +12,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
 
         return view('posts.index', [
             'title' => 'Postingan',
-            'posts' => $posts
+            // 'posts' => $posts
         ]);
     }
 
