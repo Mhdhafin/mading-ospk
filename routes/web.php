@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['auth'])->group(function () {
+
     Route::get('/', function () {
         return view('home', [
             'title' => 'Home Page',
@@ -22,14 +22,22 @@ Route::middleware(['auth'])->group(function () {
             'post' => ''
         ]);
     });
+
+
+Route::get('/blog', function () {
+    return view('posts', [
+        'title' => 'Postingan'
+    ]);
 });
 
+Route::post('/profile/edit', [AdminController::class, 'edit'])->name('edit');
 
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard', [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'dash' => 'Dashboard'
         ]);
     })->name('dashboard');
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
@@ -37,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     // Profile edit
     Route::get('/profile', [AuthController::class, 'profile']);
+    Route::get('/profile/edit/{id}', [AuthController::class, 'profile2']);
 
 
 });

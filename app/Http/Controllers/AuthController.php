@@ -67,6 +67,14 @@ class AuthController extends Controller
 
     public function profile()
     {
-        return view('profile');
+        return view('profile', [
+            'title' => 'Edit Profile'
+        ]);
+    }
+    public function profile2()
+    {
+        return view('profile2', [
+            'title' => 'Edit Profile'
+        ]);
     }
 }
