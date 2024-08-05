@@ -10,18 +10,18 @@ use Illuminate\Support\Facades\Route;
 
 
 
-    Route::get('/', function () {
-        return view('home', [
-            'title' => 'Home Page',
-            'post' => ''
-        ]);
-    });
-    Route::get('/about', function () {
-        return view('about', [
-            'title' => 'About Page',
-            'post' => ''
-        ]);
-    });
+Route::get('/', function () {
+    return view('home', [
+        'title' => 'Home Page',
+        'post' => ''
+    ]);
+});
+Route::get('/about', function () {
+    return view('about', [
+        'title' => 'About Page',
+        'post' => ''
+    ]);
+});
 
 
 Route::get('/blog', function () {
@@ -29,8 +29,6 @@ Route::get('/blog', function () {
         'title' => 'Postingan'
     ]);
 });
-
-Route::post('/profile/edit', [AdminController::class, 'edit'])->name('edit');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -40,14 +38,15 @@ Route::middleware(['auth'])->group(function () {
             'dash' => 'Dashboard'
         ]);
     })->name('dashboard');
+    Route::get('/user', [AdminController::class, 'userList']);
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     // Profile edit
     Route::get('/profile', [AuthController::class, 'profile']);
-    Route::get('/profile/edit/{id}', [AuthController::class, 'profile2']);
+    Route::get('/profile/edit/', [AuthController::class, 'profile2']);
 
-
+    Route::post('/profile/edit/{id}', [AdminController::class, 'edit'])->name('edit');
 });
 
 

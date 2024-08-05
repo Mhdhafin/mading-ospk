@@ -26,9 +26,9 @@ class AuthController extends Controller
 
             if (Auth::user()->role === 'admin') {
                 return redirect()->route('dashboard');
-            }else{
-            $request->session()->regenerate();
-            return redirect()->intended('/');
+            } else {
+                $request->session()->regenerate();
+                return redirect()->intended('/');
             }
         } else {
             return back()->with('error', 'Username or Password Invalid');
