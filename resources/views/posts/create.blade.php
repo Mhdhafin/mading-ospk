@@ -9,23 +9,25 @@
                 <p>Tolong buat postingan yang benar dan fakta!</p>
             </div>
 
-            <form action="">
+            <form action="/dashboard/post" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="lg:col-span-2">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                         <div class="md:col-span-5">
-                            <label for="full_name">Title</label>
-                            <input type="text" name="full_name" id="full_name"
-                                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                            <label for="title">Title</label>
+                            <input type="text" name="title" id="title"
+                                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required />
                         </div>
 
                         <div class="md:col-span-5">
                             <label for="author">Author</label>
                             <input type="text" name="author" id="author"
-                                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required />
                         </div>
                         <div class="md:col-span-5">
-                            <label for="author">Author</label>
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <label for="content">Content:</label>
+                            <textarea name="content" id="content" class="h-20 border mt-1 rounded px-4 w-full bg-gray-50" cols="30"
+                                rows="10" required></textarea>
                         </div>
 
                         <div class="col-span-full">
@@ -41,10 +43,10 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                     <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                                        <label for="file-upload"
+                                        <label for="image"
                                             class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                             <span>Upload a file</span>
-                                            <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                            <input id="image" name="image" type="file" class="sr-only">
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
@@ -55,7 +57,7 @@
 
                         <div class="md:col-span-5 text-right">
                             <div class="inline-flex items-end">
-                                <button
+                                <button type="submit"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                             </div>
                         </div>

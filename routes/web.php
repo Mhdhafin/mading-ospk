@@ -39,9 +39,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
     })->name('dashboard');
     Route::get('/user', [AdminController::class, 'userList']);
-    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::resource('/dashboard/post', PostController::class);
     // Profile edit
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::get('/profile/edit/', [AuthController::class, 'profile2']);

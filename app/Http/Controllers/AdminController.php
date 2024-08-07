@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -10,6 +11,9 @@ class AdminController extends Controller
 {
     public function index()
     {
+
+        $posts = Post::all();
+
         return view('dashboard', [
             'title' => 'Admin Page'
         ]);

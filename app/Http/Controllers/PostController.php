@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -12,11 +13,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $posts = Post::all();
+        $posts = Post::all();
 
         return view('posts.index', [
             'title' => 'Postingan',
-            // 'posts' => $posts
+            'posts' => $posts
         ]);
     }
 
@@ -35,7 +36,33 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = $request->validate([
+            'title' => 'required|min:4|unique:posts,title',
+            'author' => 'required|min:4',
+            'content' => 'required',
+            'image' => 'image|mimes:jpeg,jpg,png|max:1048'
+        ]);
+
+
+
+
+        $image = null;
+        if ($request->HashFile('image')) {
+            $file = $request->file('image');
+            $filename = Str::slug($request->title) . '.' . $file->getClientOriginalName();
+            $path = $file->storeAs('posts-ospk/' . $filename);
+            $image = $path;
+        }
+
+        $validator['image'] = $image;
+        $validator['slug'] = Str::slug($request->title);
+
+        dd($validator);
+
+        Post::create($validator);
+
+        return redirect('/dashboard')->with('success', 'Berhasil Menambahkan Postingan');
     }
 
     /**
