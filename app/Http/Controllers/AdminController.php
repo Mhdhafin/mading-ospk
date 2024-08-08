@@ -15,7 +15,9 @@ class AdminController extends Controller
         $posts = Post::all();
 
         return view('dashboard', [
-            'title' => 'Admin Page'
+            'title' => 'Admin Page',
+            'dash' => 'Dashboard',
+            'post' => $posts
         ]);
     }
 

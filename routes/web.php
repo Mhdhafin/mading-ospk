@@ -32,14 +32,9 @@ Route::get('/blog', function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard', [
-            'title' => 'Dashboard',
-            'dash' => 'Dashboard'
-        ]);
-    })->name('dashboard');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/user', [AdminController::class, 'userList']);
-    Route::resource('/dashboard/post', PostController::class);
+    Route::resource('/admin/post', PostController::class);
     // Profile edit
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::get('/profile/edit/', [AuthController::class, 'profile2']);

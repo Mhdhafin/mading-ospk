@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
+
 
 class PostController extends Controller
 {
@@ -45,24 +48,21 @@ class PostController extends Controller
         ]);
 
 
+        $image = $request->file('image');
+        $filename = date('Y-m-d'). $image->getClientOriginalName();
+        $path = 'image-posts/'.$filename;
 
+        Storage::disk('public')->put($path, file_get_contents($image));
 
-        $image = null;
-        if ($request->HashFile('image')) {
-            $file = $request->file('image');
-            $filename = Str::slug($request->title) . '.' . $file->getClientOriginalName();
-            $path = $file->storeAs('posts-ospk/' . $filename);
-            $image = $path;
-        }
+        $post['title'] = $request->title;
+        $post['author'] = $request->author;
+        $post['content'] = $request->content;
+        $post['image'] = $filename;
 
-        $validator['image'] = $image;
-        $validator['slug'] = Str::slug($request->title);
-
-        dd($validator);
 
         Post::create($validator);
 
-        return redirect('/dashboard')->with('success', 'Berhasil Menambahkan Postingan');
+        return redirect('/dashboard')->with('success', 'Berhasil Menambahkan Postingan!');
     }
 
     /**
@@ -94,6 +94,13 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $posts = Post::findOrFail($id);
+
+        Storage::delete('image-posts/'.$posts->image);
+
+        $posts->delete();
+
+
+        return redirect('dashboard')->with('status', 'Data Postingan Berhasil di hapus!');
     }
 }
