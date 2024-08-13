@@ -21,8 +21,19 @@ class AdminController extends Controller
         ]);
     }
 
-    public function edit(Request $request, $id)
+    public function edit(User $user)
     {
+
+
+        return view('profile2', [
+            'title' => 'User Edit',
+            'users' => $user
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
         $request->validate([
             'name' => 'required|min:4',
             'username' => 'required|min:5',

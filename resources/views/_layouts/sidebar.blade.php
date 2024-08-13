@@ -25,7 +25,7 @@
                 <x-sidebar-link href="/user" :active="request()->is('user')">User Lists</x-sidebar-link>
             </li>
             <li class="relative">
-                <x-sidebar-link href="/posts/create" :active="request()->is('posts/create')">Create Post</x-sidebar-link>
+                <x-sidebar-link href="/admin/post/create" :active="request()->is('admin/post/create')">Create Post</x-sidebar-link>
             </li>
 
 

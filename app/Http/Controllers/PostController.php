@@ -49,18 +49,18 @@ class PostController extends Controller
 
 
         $image = $request->file('image');
-        $filename = date('Y-m-d'). $image->getClientOriginalName();
-        $path = 'image-posts/'.$filename;
+        $filename = date('Y-m-d') . $image->getClientOriginalName();
+        $path = 'image-posts/' . $filename;
 
         Storage::disk('public')->put($path, file_get_contents($image));
 
         $post['title'] = $request->title;
         $post['author'] = $request->author;
         $post['content'] = $request->content;
-        $post['image'] = $filename;
+        $post['image'] = $path;
 
 
-        Post::create($validator);
+        Post::create($post);
 
         return redirect('/dashboard')->with('success', 'Berhasil Menambahkan Postingan!');
     }
@@ -76,19 +76,55 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+
+        return view('posts.edit', [
+            'title' => 'Update Post',
+            'posts' => $post
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'content' => 'required',
+            'image' => 'image|mimes:jpeg,jpg,png|max:1048'
+        ]);
 
+        $post = Post::findOrFail($id);
+
+        // Periksa apakah ada file gambar yang diunggah
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = date('Y-m-d') . $image->getClientOriginalName();
+            $path = 'image-posts/' . $filename;
+
+            // Simpan gambar baru
+            Storage::disk('public')->put($path, file_get_contents($image));
+
+            // Hapus gambar lama jika ada
+            if ($post->image) {
+                Storage::disk('public')->delete($post->image);
+            }
+
+            // Simpan path gambar baru di database
+            $post->image = $path;
+        }
+
+        // Update field lainnya jika ada
+        $post->title = $request->input('title'); // Misalnya, mengupdate title
+        $post->author = $request->input('author'); // Misalnya, mengupdate author
+        $post->content = $request->input('content'); // Misalnya, mengupdate content
+        $post->save();
+
+        return redirect()->route('dashboard')->with('success', 'Update Postingan berhasil!');
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -96,7 +132,7 @@ class PostController extends Controller
     {
         $posts = Post::findOrFail($id);
 
-        Storage::delete('image-posts/'.$posts->image);
+        Storage::delete($posts->image);
 
         $posts->delete();
 

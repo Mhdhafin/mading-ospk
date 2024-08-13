@@ -36,10 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user', [AdminController::class, 'userList']);
     Route::resource('/admin/post', PostController::class);
     // Profile edit
-    Route::get('/profile', [AuthController::class, 'profile']);
-    Route::get('/profile/edit/', [AuthController::class, 'profile2']);
-
-    Route::post('/profile/edit/{id}', [AdminController::class, 'edit'])->name('edit');
+    Route::get('/profile', [AdminController::class, 'edit'])->name('profile');
+    Route::patch('/profile/edit/{User:id}', [AdminController::class, 'update']);
 });
 
 

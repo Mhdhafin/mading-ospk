@@ -5,29 +5,30 @@
     <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class="text-gray-600">
-                <p class="font-medium text-lg">Membuat Postingan</p>
-                <p>Tolong buat postingan yang benar dan fakta!</p>
+                <p class="font-medium text-lg">Mengedit Postingan</p>
+                <p>Edit postingan apa bila ada yang salah!</p>
             </div>
 
-            <form action="{{ url('/admin/post') }}" method="POST" enctype="multipart/form-data">
+            <form action="/admin/post/{{ $posts->id }}" method="POST" enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
                 <div class="lg:col-span-2">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                         <div class="md:col-span-5">
                             <label for="title">Title</label>
-                            <input type="text" name="title" id="title"
+                            <input type="text" name="title" id="title" value="{{ $posts->title }}"
                                 class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required />
                         </div>
 
                         <div class="md:col-span-5">
                             <label for="author">Author</label>
-                            <input type="text" name="author" id="author"
+                            <input type="text" name="author" id="author" value="{{ $posts->author }}"
                                 class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required />
                         </div>
                         <div class="md:col-span-5">
                             <label for="content">Content:</label>
                             <textarea name="content" id="content" class="h-20 border mt-1 rounded px-4 w-full bg-gray-50" cols="30"
-                                rows="10" required></textarea>
+                                rows="10" required>{{ $posts->content }}</textarea>
                         </div>
 
                         <div class="col-span-full">
@@ -46,7 +47,8 @@
                                         <label for="image"
                                             class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                             <span>Upload a file</span>
-                                            <input id="image" name="image" type="file" class="sr-only">
+                                            <input id="image" name="image" type="file" value="{{ $posts->image }}"
+                                                class="sr-only">
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
