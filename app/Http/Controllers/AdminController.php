@@ -46,31 +46,29 @@ class AdminController extends Controller
 
         //check if image is uploaded
         if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $filename = date('Y-m-d') . $image->getClientOriginalName();
+        $path = 'user-profile/' . $filename;
 
-            //upload new image
-            $image = $request->file('image');
-            $image->storeAs('user/profile', $image->hashName());
+        Storage::disk('public')->put($path, file_get_contents($image));
 
-            //delete old image
-            Storage::delete('user/profile/' . $user->image);
-
-            //update product with new image
-            $user->update([
-                'name' => $request->name,
-                'username' => $request->username,
-                'password' => $request->password,
-                'email' => $request->email,
-                'image' => $image->hashName()
-            ]);
+        // Hapus image jika ada
+        if($user->image) {
+            Storage::disk('public')->delete($user->image);
         }
+
+        // simpan path gambar di database
+        $user->image = $path;
+
+
+        }
+
+        $user->name = $request->input('name');
+        $user->username = $request->input('username');
+        $user->email = $request->input('email');
+        $user->save();
 
         return redirect()->route('edit')->with('status', 'Profile berhasil di edit');
     }
 
-    public function userList()
-    {
-        return view('user', [
-            'title' => 'User Lists'
-        ]);
-    }
 }

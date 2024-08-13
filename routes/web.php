@@ -33,7 +33,6 @@ Route::get('/blog', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-    Route::get('/user', [AdminController::class, 'userList']);
     Route::resource('/admin/post', PostController::class);
     // Profile edit
     Route::get('/profile', [AdminController::class, 'edit'])->name('profile');

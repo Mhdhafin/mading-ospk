@@ -10,3 +10,15 @@ window.addEventListener("click", (e) => {
         dropdownMenu.classList.add("hidden");
     }
 });
+
+// Menghilangkan alert setelah 5 detik (5000 milidetik)
+setTimeout(function () {
+    var alertBox = document.getElementById("alert-box");
+    if (alertBox) {
+        alertBox.style.transition = "opacity 0.5s ease";
+        alertBox.style.opacity = "0";
+        setTimeout(function () {
+            alertBox.style.display = "none";
+        }, 500); // Mengatur display ke 'none' setelah animasi selesai
+    }
+}, 5000);

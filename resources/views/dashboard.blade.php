@@ -3,13 +3,13 @@
 @section('body')
     <div class="w-full">
         @if (Session::has('status'))
-            <div class="mt-2 mb-3 bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg p-4 dark:bg-red-800/10 dark:border-red-900 dark:text-red-500"
+            <div id="alert-box" class="mt-2 mb-3 bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg p-4 dark:bg-red-800/10 dark:border-red-900 dark:text-red-500"
                 role="alert" tabindex="-1" aria-labelledby="hs-soft-color-success-label">
                 <span id="hs-soft-color-success-label" class="font-bold">{{ Session::get('status') }}</span>
             </div>
         @endif
         @if (Session::has('success'))
-            <div class="mt-2 mb-3 transition duration-300  bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4 dark:bg-teal-800/10 dark:border-teal-900 dark:text-teal-500"
+            <div id="alert-box" class="mt-2 mb-3 transition duration-300  bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4 dark:bg-teal-800/10 dark:border-teal-900 dark:text-teal-500"
                 role="alert" tabindex="-1" aria-labelledby="hs-soft-color-success-label">
                 <span id="hs-soft-color-success-label" class="font-bold">{{ Session::get('success') }}</span>
             </div>
@@ -66,7 +66,7 @@
                         <td class="px-6 text-sm py-4">
                             {{ $posts->content }}
                         </td>
-                        <td class="px-6 py-4 flex mt-3 ">
+                        <td class="px-6 py-4 flex mt-5 ">
                             <a href="/admin/post/{{ $posts->id }}/edit"
                                 class="font-medium py-2 px-4 bg-blue-500 text-white  hover:underline">Edit</a>
                             <form action="/admin/post/{{ $posts->id }}" method="POST">
