@@ -24,12 +24,12 @@ class UsersSeeder extends Seeder
 
         // Admin
         User::create([
-            'image' => '',
+            'image' => 'profile.jpg',
             'name' => 'admin123',
-            'username' => 'admin',
+            'username' => 'admin123',
             'role' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin123')
+            'email' => 'admin123@gmail.com',
+            'password' => bcrypt('123')
         ]);
     }
 }

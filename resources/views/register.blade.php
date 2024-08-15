@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>OSPK SMKN 65 | {{ $title }}</title>
     @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -19,7 +20,8 @@
             <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
 
                 @if (Session::has('success'))
-                    <div class="mt-2 mb-3 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4 dark:bg-teal-800/10 dark:border-teal-900 dark:text-teal-500"
+                    <div id="alert-box"
+                        class="mt-2 mb-3 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4 dark:bg-teal-800/10 dark:border-teal-900 dark:text-teal-500"
                         role="alert" tabindex="-1" aria-labelledby="hs-soft-color-success-label">
                         <span id="hs-soft-color-success-label" class="font-bold">{{ Session::get('success') }}</span>
                     </div>
@@ -82,7 +84,8 @@
                                 @enderror
 
                                 <div class="relative">
-                                    <button class="bg-slate-500 text-white rounded-md text-base px-2 py-1">Submit</button>
+                                    <button
+                                        class="bg-slate-500 text-white rounded-md text-base px-2 py-1">Submit</button>
 
                                 </div>
                                 <div class="mt-2">

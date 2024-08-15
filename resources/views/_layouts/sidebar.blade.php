@@ -56,7 +56,7 @@
         <div class="my-6 mt-auto ml-10 flex cursor-pointer">
             <div>
                 @auth
-                    <img class="h-8 w-8 rounded-full" src="./assets/img/{{ Auth()->user()->image }}" />
+                    <img class="h-8 w-8 rounded-full" src="./assets/img/profile.jpg" />
                 @else
                     <svg class="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"
@@ -66,7 +66,7 @@
                 @endauth
 
             </div>
-            <div class="ml-3">
+            <div class="ml-3 mt-1">
                 <p class="font-medium">{{ auth()->user()->name }}</p>
             </div>
         </div>

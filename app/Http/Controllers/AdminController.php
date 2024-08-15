@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -24,6 +25,7 @@ class AdminController extends Controller
     public function edit(User $user)
     {
 
+        $user = Auth::user();
 
         return view('profile2', [
             'title' => 'User Edit',
@@ -41,26 +43,24 @@ class AdminController extends Controller
             'email' => 'required',
             'image' => 'image|mimes:jpeg,jpg,png|max:1048'
         ]);
-
+        dd($request);
         $user = User::findOrFail($id);
 
         //check if image is uploaded
         if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $filename = date('Y-m-d') . $image->getClientOriginalName();
-        $path = 'user-profile/' . $filename;
+            $image = $request->file('image');
+            $filename = date('Y-m-d') . $image->getClientOriginalName();
+            $path = 'user-profile/' . $filename;
 
-        Storage::disk('public')->put($path, file_get_contents($image));
+            Storage::disk('public')->put($path, file_get_contents($image));
 
-        // Hapus image jika ada
-        if($user->image) {
-            Storage::disk('public')->delete($user->image);
-        }
+            // Hapus image jika ada
+            if ($user->image) {
+                Storage::disk('public')->delete($user->image);
+            }
 
-        // simpan path gambar di database
-        $user->image = $path;
-
-
+            // simpan path gambar di database
+            $user->image = $path;
         }
 
         $user->name = $request->input('name');
@@ -70,5 +70,4 @@ class AdminController extends Controller
 
         return redirect()->route('edit')->with('status', 'Profile berhasil di edit');
     }
-
 }

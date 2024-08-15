@@ -39,7 +39,7 @@
 
                         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                         <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
-                        <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>
+                        <x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link>
 
 
 
@@ -74,7 +74,8 @@
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="./assets/img/profile.jpg" alt="">
+                                <img class="h-8 w-8 rounded-full" src="./storage/{{ Auth()->user()->image }}"
+                                    alt="">
                             @endguest
                         </button>
                     </div>
@@ -113,7 +114,7 @@
 
             <x-nav-link2 href="/" :activ="request()->is('/')">Home</x-nav-link2>
             <x-nav-link2 href="/about" :activ="request()->is('about')">About</x-nav-link2>
-            <x-nav-link2 href="/posts" :activ="request()->is('posts')">Blog</x-nav-link2>
+            <x-nav-link2 href="/blog" :activ="request()->is('blog')">Blog</x-nav-link2>
 
 
         </div>

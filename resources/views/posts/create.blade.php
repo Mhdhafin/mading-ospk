@@ -24,9 +24,10 @@
                             <input type="text" name="author" id="author"
                                 class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" required />
                         </div>
+
                         <div class="md:col-span-5">
-                            <label for="content">Content:</label>
-                            <textarea name="content" id="content" class="h-20 border mt-1 rounded px-4 w-full bg-gray-50" cols="30"
+                            <label for="content">Content</label>
+                            <textarea name="content" id="content" class="h-20 border mt-1 rounded py-1 px-4 w-full bg-gray-50" cols="30"
                                 rows="10" required></textarea>
                         </div>
 

@@ -8,6 +8,8 @@
     <title> Ospk SMKN 65 | {{ $title }}</title>
     {{-- Alpine js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     {{-- Tailwindcss --}}
     @vite('resources/css/app.css')
     <link rel="stylesheet"
