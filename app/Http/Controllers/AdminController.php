@@ -15,7 +15,7 @@ class AdminController extends Controller
 
         $posts = Post::all();
 
-        return view('dashboard', [
+        return view('admin.dashboard', [
             'title' => 'Admin Page',
             'dash' => 'Dashboard',
             'post' => $posts
@@ -27,7 +27,7 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        return view('profile2', [
+        return view('profile', [
             'title' => 'User Edit',
             'users' => $user
         ]);
@@ -69,5 +69,27 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->route('edit')->with('status', 'Profile berhasil di edit');
+    }
+
+    public function userLists()
+    {
+
+        $user = User::all();
+        return view('admin.user', [
+            'title' => 'User Lists',
+            'users' => $user
+        ]);
+    }
+
+    public function destroyUser($id)
+    {
+        $user = User::findOrFail($id);
+
+        Storage::delete($user->image);
+
+        $user->delete();
+
+    return redirect('/users')->with('status', 'User Behasil Dihapus!');
+
     }
 }

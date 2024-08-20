@@ -8,10 +8,10 @@
     <meta name="referrer" content="always">
     <link rel="canonical" href="">
 
-    <meta name="description" ">
+    <meta name="description" >
 
+    <link rel="shortcut icon" href="./assets/img/ospk_logo.png" />
         <title>Ospk SMKN 65 | {{ $title }}</title>
-        <script src="https://cdn.tailwindcss.com"></script>
 
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="./assets/css/main.css">

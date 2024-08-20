@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Ospk SMKN 65 | {{ $title }}</title>
+    <link rel="shortcut icon" href="./assets/img/ospk_logo.png" />
+    <title> OSPK SMKN 65 | {{ $title }}</title>
     {{-- Alpine js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
 
     {{-- Tailwindcss --}}
     @vite('resources/css/app.css')

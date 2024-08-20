@@ -24,6 +24,9 @@
             <li class="relative">
                 <x-sidebar-link href="/admin/post/create" :active="request()->is('admin/post/create')">Create Post</x-sidebar-link>
             </li>
+            <li class="relative">
+                <x-sidebar-link href="/users" :active="request()->is('users')">User Lists</x-sidebar-link>
+            </li>
 
 
             {{-- <li class="relative">
@@ -56,7 +59,7 @@
         <div class="my-6 mt-auto ml-10 flex cursor-pointer">
             <div>
                 @auth
-                    <img class="h-8 w-8 rounded-full" src="./assets/img/profile.jpg" />
+                    <img class="h-8 w-8 rounded-full" src="./assets/img/{{ auth()->user()->image }}" />
                 @else
                     <svg class="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"

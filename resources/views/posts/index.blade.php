@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <div class="bg-gray-900 flex justify-between items-center mx-auto p-8">
+    <div class="bg-red-900 flex justify-between items-center mx-auto p-8">
         <h2 class="text-2xl font-semibold text-white">Postingan</h2>
 
     </div>
@@ -9,8 +9,8 @@
 
     <section class="dark:bg-gray-100 dark:text-gray-800">
         <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-            <a rel="noopener noreferrer" href="#"
-                class="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50">
+            <a rel="noopener noreferrer" href="/admin/post/{{ $post[0]->id }}"
+                class="block shadow-lg max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50">
                 <img src="./storage/{{ $post[0]->image }}" alt=""
                     class="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
                 <div class="p-6 space-y-2 lg:col-span-5">
@@ -19,6 +19,7 @@
                     </h3>
                     <span class="text-xs dark:text-gray-600">{{ $post[0]->created_at->format('j F Y') }}</span>
                     <p>{{ $post[0]->content }}</p>
+
                 </div>
             </a>
 

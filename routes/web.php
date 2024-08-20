@@ -37,6 +37,8 @@ Route::get('/blog', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('/admin/post', PostController::class);
+    Route::get('/users',[AdminController::class, 'userLists']);
+    Route::delete('/users/{id}', [AdminController::class, 'destroyUser']);
     // Profile edit
     Route::get('/profile', [AdminController::class, 'edit'])->name('profile');
     Route::put('/profile/edit/{id}', [AdminController::class, 'update']);
