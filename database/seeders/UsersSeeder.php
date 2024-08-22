@@ -15,7 +15,7 @@ class UsersSeeder extends Seeder
     {
         // User
         User::create([
-            'image' => '',
+            'image' => 'profile.jpg',
             'name' => 'user123',
             'username' => 'user',
             'email' => 'user@gmail.com',
@@ -23,13 +23,13 @@ class UsersSeeder extends Seeder
         ]);
 
         // Admin
-        // User::create([
-        //     'image' => 'profile.jpg',
-        //     'name' => 'admin123',
-        //     'username' => 'admin123',
-        //     'role' => 'admin',
-        //     'email' => 'admin123@gmail.com',
-        //     'password' => bcrypt('123')
-        // ]);
+        User::create([
+            'image' => 'profile.jpg',
+            'name' => 'admin123',
+            'username' => 'admin',
+            'role' => 'admin',
+            'email' => 'admin123@gmail.com',
+            'password' => bcrypt('admin123')
+        ]);
     }
 }

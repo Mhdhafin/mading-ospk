@@ -89,7 +89,6 @@ class AdminController extends Controller
 
         $user->delete();
 
-    return redirect('/users')->with('status', 'User Behasil Dihapus!');
-
+        return redirect('/users')->with('status', 'User Behasil Dihapus!');
     }
 }

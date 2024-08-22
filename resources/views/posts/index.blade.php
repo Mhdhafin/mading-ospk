@@ -1,13 +1,60 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <div class="bg-red-900 flex justify-between items-center mx-auto p-8">
-        <h2 class="text-2xl font-semibold text-white">Postingan</h2>
-
-    </div>
 
 
+    <header class="bg-red-900 shadow-md rounded-t-md">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-white">Postingan</h1>
+        </div>
+    </header>
 
-    <section class="dark:bg-gray-100 dark:text-gray-800">
+    <section class="pt-24 pb-16 rounded-b-md bg-slate-200">
+
+        <div class="w-full-200 px-4 grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach ($post as $posts)
+                <div class="shadow-lg hover:scale-105 bg-white  transition duration-300 rounded-md max-w-sm mx-auto">
+                    <img src="/storage/{{ $posts->image }}" role="presentation"
+                        class="object-cover w-full rounded h-44 dark:bg-gray-500">
+                    <div class="p-6 space-y-2 lg:col-span-5">
+                        <span
+                            class="bg-yellow-300 p-2 rounded-full text-xs text-gray-600">{{ $posts->created_at->format('j F Y') }}</span>
+
+                        <h2 class="text-2xl  font-semibold ">{{ $posts->title }}</h2>
+
+                        <p class="pb-5 text-base">{{ $posts->content }}</p>
+
+                        {{-- <a href="/posts/{{ $posts->slug }}"
+                            class="text-white font-medium bg-red-500 py-2 px-4 rounded-md hover:bg-red-700 transtition duration-300 mr-2 ">Selengkapnya
+                            <i class="fa-light fas fa-arrow-right hover:translate-x-[1px]"></i>
+                        </a> --}}
+
+                        <a class="group relative inline-flex items-center overflow-hidden rounded bg-red-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-red-500"
+                            href="/posts/{{ $posts->slug }}">
+                            <span class="absolute -end-full transition-all group-hover:end-4">
+                                <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </span>
+
+                            <span class="text-sm font-medium transition-all group-hover:me-4"> Selengkapnya </span>
+                        </a>
+
+
+
+
+                    </div>
+
+                </div>
+            @endforeach
+        </div>
+
+    </section>
+
+
+
+    {{-- <section class="dark:bg-gray-100 dark:text-gray-800">
         <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
             <a rel="noopener noreferrer" href="/admin/post/{{ $post[0]->id }}"
                 class="block shadow-lg max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50">
@@ -41,6 +88,6 @@
             </div>
 
         </div>
-    </section>
+    </section> --}}
 
 </x-layout>

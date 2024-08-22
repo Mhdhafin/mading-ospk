@@ -44,9 +44,13 @@
                             </li>
                             <li>
                                 <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                    href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile">Free
-                                    Products</a>
+                                    href="/login">Login</a>
                             </li>
+                            <li>
+                                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                                    href="/register">Register</a>
+                            </li>
+
                         </ul>
                     </div>
                     <div class="w-full lg:w-4/12 px-4">
@@ -54,19 +58,23 @@
                         <ul class="list-unstyled">
                             <li>
                                 <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                    href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-profile">Prestasi</a>
+                                    href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-profile">Logo</a>
                             </li>
                             <li>
                                 <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                    href="https://creative-tim.com/terms?ref=njs-profile">MPLS</a>
+                                    href="https://creative-tim.com/terms?ref=njs-profile">Pengertian</a>
                             </li>
                             <li>
                                 <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                    href="https://creative-tim.com/privacy?ref=njs-profile">Jurusan</a>
+                                    href="https://creative-tim.com/privacy?ref=njs-profile">Visi Misi</a>
                             </li>
                             <li>
                                 <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                    href="https://creative-tim.com/contact-us?ref=njs-profile">Spancer</a>
+                                    href="https://creative-tim.com/contact-us?ref=njs-profile">Struktur</a>
+                            </li>
+                            <li>
+                                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                                    href="https://creative-tim.com/contact-us?ref=njs-profile">Tentang Kami</a>
                             </li>
                         </ul>
                     </div>

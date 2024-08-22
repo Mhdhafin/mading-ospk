@@ -8,7 +8,8 @@
                 </div>
                 <div class="w-full py-6 self-end px-4 sm:w-1/2">
                     <h2 class="text-2xl font-bold ">Tentang Kami</h2>
-                    <p class="text-lg  sm:mt-5 sm:max-w-sm lg:max-w-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
+                    <p class="text-lg  sm:mt-5 sm:max-w-sm lg:max-w-xl">Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Omnis
                         vero ut
                         non
                         aspernatur. Accusamus,
@@ -26,6 +27,13 @@
                         ipsa aliquid, maxime ut, at aperiam delectus.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="pt-16 pb-12">
+        <div class="mx-auto">
+            <h2 class="text-2xl font-semibold border-b-2 border-gray-900 inline-block mb-5 ">Struktur Organisasi</h2>
+
         </div>
     </section>
 </x-layout>

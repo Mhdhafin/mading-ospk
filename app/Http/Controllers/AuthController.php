@@ -43,7 +43,7 @@ class AuthController extends Controller
 
     public function registerPost(Request $request)
     {
-        $validator = $request->validate([
+        $validate = $request->validate([
             'name' => 'required|min:4',
             'username' => 'required',
             'password' => 'required',
@@ -51,7 +51,13 @@ class AuthController extends Controller
 
         ]);
 
-        User::create($validator);
+        $validate['name'] = $request->name;
+        $validate['username'] = $request->username;
+        $validate['email'] = $request->email;
+        $validate['password'] = bcrypt($validate['password']);
+
+
+        User::create($validate);
 
         return redirect()->back()->with('success', 'Create Register Succesfully');
     }
@@ -64,6 +70,4 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
-
-
 }

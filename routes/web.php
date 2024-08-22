@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\DashboardPostsController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
 use Illuminate\Routing\RouteGroup;
@@ -25,19 +26,24 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/blog', function () {
-    $posts = Post::all();
-    return view('posts.index', [
-        'title' => 'Postingan',
-        'post' => $posts
-    ]);
-});
+// Route::get('/blog', function () {
+//     $posts = Post::all();
+//     return view('posts.index', [
+//         'title' => 'Postingan',
+//         'post' => $posts
+//     ]);
+// });
+
+
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+
 
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-    Route::resource('/admin/post', PostController::class);
-    Route::get('/users',[AdminController::class, 'userLists']);
+    Route::resource('/admin/post', DashboardPostsController::class);
+    Route::get('/users', [AdminController::class, 'userLists']);
     Route::delete('/users/{id}', [AdminController::class, 'destroyUser']);
     // Profile edit
     Route::get('/profile', [AdminController::class, 'edit'])->name('profile');
@@ -50,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Authentication
 Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
+Route::post('/login/auth', [AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('registerPost');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');

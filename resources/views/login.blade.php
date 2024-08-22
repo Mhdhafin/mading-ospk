@@ -29,7 +29,7 @@
                     <div>
                         <h1 class="text-2xl font-semibold w-screen">Login </h1>
                     </div>
-                    <form action="{{ route('loginPost') }}" method="POST">
+                    <form action="/login/auth" method="POST">
                         @csrf
                         <div class="divide-y divide-gray-200">
                             <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -48,8 +48,7 @@
                                         class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                                 </div>
                                 <div class="relative">
-                                    <button
-                                        class="bg-red-500 text-white rounded-md text-base px-2 py-1">Submit</button>
+                                    <button class="bg-red-500 text-white rounded-md text-base px-2 py-1">Submit</button>
 
                                 </div>
                                 <div class="mt-2">
@@ -66,4 +65,5 @@
 
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
