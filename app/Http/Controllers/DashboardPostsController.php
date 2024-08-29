@@ -17,7 +17,7 @@ class DashboardPostsController extends Controller
 
         $posts = Post::all();
 
-        return view('admin.dashboard', [
+        return view('admin.table', [
             'title' => 'Admin Page',
             'dash' => 'Dashboard',
             'post' => $posts

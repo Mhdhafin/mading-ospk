@@ -8,7 +8,7 @@
                 <p>Tolong buat postingan yang benar dan fakta!</p>
             </div>
 
-            <form action="{{ url('/admin/post') }}" method="POST" enctype="multipart/form-data">
+            <form action="/admin/post" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="lg:col-span-2">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">

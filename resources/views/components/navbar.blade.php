@@ -62,27 +62,26 @@
                 @else
                     <!-- Profile dropdown -->
                     <div class="relative ml-3">
-                        <div>
+                        <div class="flex items-center">
                             <button type="button" @click="isOpen = !isOpen"
-                                class="relative flex rounded-full bg-red-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                class="relative flex rounded-full bg-red-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 ml-5 focus:ring-offset-gray-800"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="/storage/{{ Auth()->user()->image }}" alt="">
-
+                                <img class="h-8 w-8 rounded-full" src="./assets/img/profile.jpg" alt="">
                             </button>
                         </div>
 
                         <!--
-                      Dropdown menu, show/hide based on menu state.
+                                                                                          Dropdown menu, show/hide based on menu state.
 
-                      Entering: "transition ease-out duration-100"
-                        From: "transform opacity-0 scale-95"
-                        To: "transform opacity-100 scale-100"
-                      Leaving: "transition ease-in duration-75"
-                        From: "transform opacity-100 scale-100"
-                        To: "transform opacity-0 scale-95"
-                    -->
+                                                                                          Entering: "transition ease-out duration-100"
+                                                                                            From: "transform opacity-0 scale-95"
+                                                                                            To: "transform opacity-100 scale-100"
+                                                                                          Leaving: "transition ease-in duration-75"
+                                                                                            From: "transform opacity-100 scale-100"
+                                                                                            To: "transform opacity-0 scale-95"
+                                                                                        -->
                         <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
                             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-75 transform"

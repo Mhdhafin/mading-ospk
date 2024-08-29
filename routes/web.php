@@ -43,7 +43,7 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('/admin/post', DashboardPostsController::class);
-    Route::get('/users', [AdminController::class, 'userLists']);
+    // Route::get('/users', [AdminController::class, 'userLists']);
     Route::delete('/users/{id}', [AdminController::class, 'destroyUser']);
     // Profile edit
     Route::get('/profile', [AdminController::class, 'edit'])->name('profile');

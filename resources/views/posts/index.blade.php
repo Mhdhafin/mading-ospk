@@ -21,12 +21,9 @@
 
                         <h2 class="text-2xl  font-semibold ">{{ $posts->title }}</h2>
 
-                        <p class="pb-5 text-base">{{ $posts->content }}</p>
+                        <p class="pb-5 text-base">{{ Str::limit($posts->content, 40, '...') }}</p>
 
-                        {{-- <a href="/posts/{{ $posts->slug }}"
-                            class="text-white font-medium bg-red-500 py-2 px-4 rounded-md hover:bg-red-700 transtition duration-300 mr-2 ">Selengkapnya
-                            <i class="fa-light fas fa-arrow-right hover:translate-x-[1px]"></i>
-                        </a> --}}
+
 
                         <a class="group relative inline-flex items-center overflow-hidden rounded bg-red-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-red-500"
                             href="/posts/{{ $posts->slug }}">

@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    {{-- @dd($users) --}}
+
     <section class="pt-12 p-8 shadow-lg bg-white rounded-md">
         <form action="/profile/edit/{{ $users->id }}" method="POST" enctype="multipart/form-data">
             @method('PUT')

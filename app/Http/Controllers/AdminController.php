@@ -13,12 +13,16 @@ class AdminController extends Controller
     public function index()
     {
 
-        $posts = Post::all();
+        $posts = Post::all()->count();
+
+        $user = User::all()->count();
+        $users = User::all();
 
         return view('admin.dashboard', [
             'title' => 'Admin Page',
-            'dash' => 'Dashboard',
-            'post' => $posts
+            'post' => $posts,
+            'users' => $user,
+            'user' => $users
         ]);
     }
 
@@ -43,7 +47,7 @@ class AdminController extends Controller
             'email' => 'required',
             'image' => 'image|mimes:jpeg,jpg,png|max:1048'
         ]);
-        dd($request);
+
         $user = User::findOrFail($id);
 
         //check if image is uploaded
@@ -71,15 +75,15 @@ class AdminController extends Controller
         return redirect()->route('edit')->with('status', 'Profile berhasil di edit');
     }
 
-    public function userLists()
-    {
+    // public function userLists()
+    // {
 
-        $user = User::all();
-        return view('admin.user', [
-            'title' => 'User Lists',
-            'users' => $user
-        ]);
-    }
+    //     $user = User::all();
+    //     return view('admin.user', [
+    //         'title' => 'User Lists',
+    //         'users' => $user
+    //     ]);
+    // }
 
     public function destroyUser($id)
     {
