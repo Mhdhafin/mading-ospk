@@ -14,12 +14,12 @@
                     fill="white" />
             </svg>
 
-            <span class="mx-2 text-2xl font-semibold text-white">Dashboard</span>
+            <span class="mx-2 text-2xl font-semibold text-white">Admin OSPK</span>
         </div>
     </div>
 
     <nav class="mt-10">
-        <a class="flex items-center px-6 py-2 mt-4 {{ Request::is('dashboard') ? 'text-white' : 'text-gray-700' }}"
+        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ Request::is('dashboard') ? ' bg-gray-700 bg-opacity-25 text-white' : 'text-gray-500' }}"
             href="/dashboard">
             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -32,7 +32,7 @@
             <span class="mx-3">Dashboard</span>
         </a>
 
-        <a class="flex items-center px-6 py-2 mt-4  hover:text-gray-100 {{ Request::is('admin/post') ? 'text-white' : 'text-gray-700' }}"
+        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ Request::is('admin/post') ? ' bg-gray-700 bg-opacity-25 text-white' : 'text-gray-500' }}"
             href="/admin/post/">
             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -43,7 +43,7 @@
             <span class="mx-3">Tables</span>
         </a>
 
-        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ Request::is('admin/post/create') ? ' bg-opacity-25 text-white' : 'text-gray-500' }}"
+        <a class="flex items-center px-6 py-2 mt-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100 {{ Request::is('admin/post/create') ? ' bg-gray-700 bg-opacity-25 text-white' : 'text-gray-500' }}"
             href="/admin/post/create">
             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">

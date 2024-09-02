@@ -22,3 +22,35 @@ setTimeout(function () {
         }, 500); // Mengatur display ke 'none' setelah animasi selesai
     }
 }, 5000);
+
+// Menampilkan Image
+function previewImage() {
+    const image = document.querySelector("#image");
+    const imgPreview = document.querySelector(".img-preview");
+    const label = document.querySelector("#label");
+
+    // Menampilkan preview hanya jika file telah dipilih
+    imgPreview.style.display = "block";
+    label.style.display = "none";
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+
+    oFReader.onload = function (oFREvent) {
+        imgPreview.src = oFREvent.target.result;
+    };
+}
+
+//Window scroll
+document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.getElementById("navbar");
+    const navbarHeight = navbar.offsetTop;
+
+    window.addEventListener("scroll", function () {
+        if (window.pageYOffset > navbarHeight) {
+            navbar.classList.add("fixed", "w-full", "shadow-md");
+        } else {
+            navbar.classList.remove("fixed", "w-full", "shadow-md");
+        }
+    });
+});
