@@ -23,10 +23,10 @@
 
 <body>
     <div class="bg-slate-200 flex h-screen">
-        @include('_layouts.sidebar')
+        @include('admin._layouts.sidebar')
 
         <div class="flex h-full w-full flex-col">
-            @include('_layouts.header')
+            @include('admin._layouts.header')
 
 
             <div class="h-full overflow-hidden pl-10">

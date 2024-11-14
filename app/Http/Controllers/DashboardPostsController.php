@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\TodoRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -17,7 +20,7 @@ class DashboardPostsController extends Controller
 
         $posts = Post::all();
 
-        return view('admin.table', [
+        return view('admin.pages.table', [
             'title' => 'Admin Page',
             'dash' => 'Dashboard',
             'post' => $posts
@@ -36,28 +39,21 @@ class DashboardPostsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
 
-        $validator = $request->validate([
-            'title' => 'required|min:4|unique:posts',
-            'author' => 'required|min:4',
-            'content' => 'required',
-            'image' => 'image|mimes:jpeg,jpg,png|max:1048'
-        ]);
+        $validator = $request->validated();
 
 
-        $image = $request->file('image');
-        $filename = Str::slug($request->title) . $image->getClientOriginalName();
-        $path = 'image-posts/' . $filename;
-
-        Storage::disk('public')->put($path, file_get_contents($image));
 
         $validator['author'] = $request->author;
         $validator['content'] = $request->content;
         $validator['slug'] = Str::slug($request->title);
-        $validator['image'] = $path;
 
+        $file = $request->file('image');
+        $year = Carbon::now()->format('Y');
+
+        $validator['image'] = $file ? $file->storeAs("posts-image/$year", Uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
 
         Post::create($validator);
 
@@ -91,14 +87,10 @@ class DashboardPostsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(TodoRequest $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'content' => 'required',
-            'image' => 'image|mimes:jpeg,jpg,png|max:1048'
-        ]);
+
+        $validator = $request->validated();
 
         $post = Post::findOrFail($id);
 
@@ -120,13 +112,15 @@ class DashboardPostsController extends Controller
             $post->image = $path;
         }
 
+
+
         // Update field lainnya jika ada
         $post->title = $request->input('title'); // Misalnya, mengupdate title
         $post->author = $request->input('author'); // Misalnya, mengupdate author
         $post->content = $request->input('content'); // Misalnya, mengupdate content
         $post->save();
 
-        return redirect()->route('dashboard')->with('success', 'Update Postingan berhasil!');
+        return redirect('/dashboard')->with('success', 'Update Postingan berhasil!');
     }
     /**
      * Remove the specified resource from storage.

@@ -1,5 +1,4 @@
-@extends('_layouts.main')
-
+@extends('admin._layouts.main')
 @section('body')
     {{-- Blog Lists --}}
     <div class="w-full">

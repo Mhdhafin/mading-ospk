@@ -8,6 +8,10 @@ export default {
     ],
     theme: {
         extend: {
+            backgroundImage: {
+                "custom-image": "url('/public/assets/img/image.jpg')",
+                "ospk-team": "url(./assets/img/ospk-team.jpeg)",
+            },
             fontFamily: {
                 sans: ["Inter var", ...defaultTheme.fontFamily.sans],
             },

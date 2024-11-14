@@ -40,17 +40,3 @@ function previewImage() {
         imgPreview.src = oFREvent.target.result;
     };
 }
-
-//Window scroll
-document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.getElementById("navbar");
-    const navbarHeight = navbar.offsetTop;
-
-    window.addEventListener("scroll", function () {
-        if (window.pageYOffset > navbarHeight) {
-            navbar.classList.add("fixed", "w-full", "shadow-md");
-        } else {
-            navbar.classList.remove("fixed", "w-full", "shadow-md");
-        }
-    });
-});

@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('login', [
+        return view('Authlayouts.login', [
             'title' => 'Login Page'
         ]);
     }
@@ -36,7 +36,7 @@ class AuthController extends Controller
     }
     public function register()
     {
-        return view('register', [
+        return view('Authlayouts.register', [
             'title' => 'Register Page'
         ]);
     }

@@ -15,7 +15,6 @@ class UsersSeeder extends Seeder
     {
         // User
         User::create([
-            'image' => 'profile.jpg',
             'name' => 'user123',
             'username' => 'user',
             'email' => 'user@gmail.com',
@@ -24,7 +23,6 @@ class UsersSeeder extends Seeder
 
         // Admin
         User::create([
-            'image' => 'profile.jpg',
             'name' => 'admin123',
             'username' => 'admin',
             'role' => 'admin',

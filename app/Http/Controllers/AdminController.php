@@ -18,7 +18,7 @@ class AdminController extends Controller
         $user = User::all()->count();
         $users = User::all();
 
-        return view('admin.dashboard', [
+        return view('admin.pages.dashboard', [
             'title' => 'Admin Page',
             'post' => $posts,
             'users' => $user,
@@ -29,12 +29,12 @@ class AdminController extends Controller
     public function edit(User $user)
     {
 
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        return view('profile', [
-            'title' => 'User Edit',
-            'users' => $user
-        ]);
+        // return view('pages.profile', [
+        //     'title' => 'User Edit',
+        //     'users' => $user
+        // ]);
     }
 
     public function update(Request $request, $id)

@@ -1,4 +1,4 @@
-@extends('_layouts.main')
+@extends('admin._layouts.main')
 
 @section('body')
     <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">

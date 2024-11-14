@@ -11,25 +11,27 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="overflow-hidden">
     <div class="h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
             <div
                 class="absolute inset-0 bg-gradient-to-r from-red-300 to-red-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
             </div>
-            <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-                @if (Session::has('error'))
+            <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl">
+
+                @if (Session::has('status'))
                     <div id="alert-box"
                         class="mt-2 mb-3 bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg p-4 dark:bg-red-800/10 dark:border-red-900 dark:text-red-500"
                         role="alert" tabindex="-1" aria-labelledby="hs-soft-color-success-label">
                         <span id="hs-soft-color-success-label" class="font-bold">{{ Session::get('error') }}</span>
                     </div>
                 @endif
-                <div class="max-w-md mx-auto">
+
+                <div class="max-w-md mx-auto bg-white">
                     <div>
                         <h1 class="text-2xl font-semibold w-screen">Login </h1>
                     </div>
-                    <form action="/login/auth" method="POST">
+                    <form action="{{ url('/login/auth') }}" method="POST">
                         @csrf
                         <div class="divide-y divide-gray-200">
                             <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
