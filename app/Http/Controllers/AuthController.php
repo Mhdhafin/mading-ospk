@@ -18,18 +18,15 @@ class AuthController extends Controller
     public function loginPost(Request $request)
     {
         $credentials = $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
         if (Auth::attempt($credentials)) {
 
-            if (Auth::user()->role === 'admin') {
-                return redirect()->route('dashboard');
-            } else {
-                $request->session()->regenerate();
-                return redirect()->intended('/');
-            }
+
+            $request->session()->regenerate();
+            return redirect('/dashboard');
         } else {
             return back()->with('error', 'Username or Password Invalid');
         }

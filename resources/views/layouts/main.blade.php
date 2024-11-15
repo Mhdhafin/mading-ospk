@@ -12,9 +12,12 @@
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     {{-- Font Awesome --}}
     <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    {{-- css --}}
-    {{-- <link rel="stylesheet" href="{}"> --}}
-    {{-- Tailwindcss --}}
+
+    <!-- from node_modules -->
+    <script src="node_modules/@material-tailwind/html@latest/scripts/ripple.js"></script>
+
+    <!-- from cdn -->
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
 
     <link rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">

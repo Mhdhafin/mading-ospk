@@ -44,7 +44,7 @@
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
-                            <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>
+                            <x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <x-nav-link2 href="/" :activ="request()->is('/')">Home</x-nav-link2>
                 <x-nav-link2 href="/about" :activ="request()->is('about')">About</x-nav-link2>
-                <x-nav-link2 href="/posts" :activ="request()->is('posts')">Blog</x-nav-link2>
+                <x-nav-link2 href="/blog" :activ="request()->is('blog')">Blog</x-nav-link2>
 
                 <div class="z-10 text-white block px-4">
                     <a href="/login" class="text-base mr-2 hover:scale-105 transition duration-300">Login</a>

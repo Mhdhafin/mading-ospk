@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StructureController extends Controller
+class PostsController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.structure');
+        return view('admin.pages.posts');
     }
 }

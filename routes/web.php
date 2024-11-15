@@ -3,13 +3,15 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\DashboardPostsController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\HeroController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StructureController;
+use App\Http\Controllers\TestimonalController;
+use App\Http\Controllers\VisiMisiController;
 use App\Mail\SendMail;
 use App\Models\Post;
-use Illuminate\Routing\RouteGroup;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -17,67 +19,59 @@ use Illuminate\Support\Facades\Route;
 
 
 
-// Route::get('/blog', function () {
-//     $posts = Post::all();
-//     return view('posts.index', [
-//         'title' => 'Postingan',
-//         'post' => $posts
-//     ]);
-// });
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', function () {
-        return view('pages.home');
-    });
-    Route::get('/about', function () {
-        return view('pages.about');
-    });
-    Route::get('/posts', [PostController::class, 'index']);
-    Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/blog', function () {
+    $posts = Post::all();
+    return view('posts.index', [
+        'title' => 'Postingan',
+        'post' => $posts
+    ]);
 });
 
 
-// Route::get('/emails', function () {
-//     $data = [
-//         'subject' => 'Coba kirim',
-//         'name_sender' => 'dhafinharon40@gmail.com',
-//         'isi' => 'Halo, ini dari dhafin'
-//     ];
-
-//     Mail::to('dhafinharon40@gmail.com')->send(new SendMail($data));
-// });
+Route::get('/', function () {
+    return view('pages.home');
+});
+Route::get('/about', function () {
+    return view('pages.about');
+});
+// Route::get('/posts', [BlogController::class, 'index']);
+// Route::get('/posts/{post:slug}', [BlogController::class, 'show']);
 
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact-send', [ContactController::class, 'store']);
 
 
-// Route::middleware(['auth'])->group(function () {
-
-
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-Route::resource('/admin/post', DashboardPostsController::class);
-// Route::get('/users', [AdminController::class, 'userLists']);
+
+
+Route::middleware('auth', 'verified')->group(function () {
+    Route::resource('/dashboard/hero', HeroController::class);
+    Route::resource('/dashboard/faq', FaqController::class);
+    Route::resource('/dashboard/profile', ProfileController::class);
+    Route::resource('/dashboard/visimisi', VisiMisiController::class);
+    Route::resource('/dashboard/testimonal', TestimonalController::class);
+    Route::resource('/dashboard/structure', StructureController::class);
+    Route::resource('/dashboard/posts', PostsController::class);
+});
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/users', [AdminController::class, 'userLists']);
 Route::delete('/users/{id}', [AdminController::class, 'destroyUser']);
 // Profile edit
 Route::get('/profile', [AdminController::class, 'edit'])->name('profile');
 Route::put('/profile/edit/{id}', [AdminController::class, 'update']);
-
-
-
-// });
-
-
-// Admin
-// Route::get('/admin/home', [AdminController::class, 'index']);
-
-
-
-
-
-
 // Authentication
 Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login/auth', [AuthController::class, 'loginPost'])->name('loginPost');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('registerPost');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
