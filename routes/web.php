@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/blog', function () {
-    $posts = Post::all();
-    return view('posts.index', [
+    $posts = Post::get();
+    return view('pages.blog', [
         'title' => 'Postingan',
         'post' => $posts
     ]);
@@ -39,7 +39,7 @@ Route::get('/about', function () {
 
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact-send', [ContactController::class, 'store']);
-
+Route::get('/posts/{post:slug}', [PostsController::class, 'show']);
 
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 

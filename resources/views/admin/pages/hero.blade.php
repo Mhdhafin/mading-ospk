@@ -22,11 +22,10 @@
         <section class="hero bg-center bg-no-repeat bg-gray-700 bg-blend-multiply">
             <div class="hero-bg"></div>
             <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-                <h1 class="mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">Osis
-                    Smkn
-                    65 Jakarta</h1>
-                <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">Here at Flowbite we focus on
-                    markets where technology, innovation, and capital can unlock long-term value and drive economic growth.
+                <h1 class="mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">
+                    {{ $hero->title }}</h1>
+                <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">Here at Flowbite
+                    {{ $hero->subtitle }}
                 </p>
                 <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                     <a href="#"
@@ -60,17 +59,17 @@
                         Edit Hero Section
                     </h3>
                 </div>
-                <form class="w-full" action="/dashboard/herosection" method="post" enctype="multipart/form-data">
+                <form class="w-full" action="/dashboard/hero" method="post">
                     @csrf
                     <div class="flex w-full flex-col gap-4 p-4">
                         <div class="flex w-full flex-col  gap-4 ">
                             <div class="w-full ">
                                 <label class="block mb-2 text-sm text-slate-600">
-                                    Heading
+                                    Title
                                 </label>
                                 <input type="text" name="title"
                                     class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                    placeholder="Heading" />
+                                    placeholder="Title.." />
                             </div>
                             <div class="w-full ">
                                 <div class="flex flex-col items-end gap-6 w-full">
@@ -88,7 +87,7 @@
 
                         </div>
 
-                        <div class="p-4 w-full">
+                        {{-- <div class="p-4 w-full">
                             <label class="block mt-4 text-sm">
                                 <span class="text-slate-600 ">Hero Image</span>
                                 <div class="flex items-center justify-center w-full">
@@ -116,7 +115,7 @@
                                 </div>
 
                             </label>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="p-6 pt-0">
                         <button
@@ -134,7 +133,7 @@
 
 
     @push('script')
-        <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
+        <script src="{{ asset('assets/js/modal.js') }}"></script>
     @endpush
 
     @push('custom_script')

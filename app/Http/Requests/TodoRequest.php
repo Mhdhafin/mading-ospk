@@ -21,11 +21,6 @@ class TodoRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'title' => 'required|min:4|unique:posts',
-            'author' => 'required|min:4',
-            'content' => 'required',
-            'image' => 'image|mimes:jpeg,jpg,png|max:1048'
-        ];
+        return [];
     }
 }

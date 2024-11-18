@@ -31,9 +31,7 @@
                     </button>
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="px-2">
-                        <img src="{{ asset('assets/img/logo-osis.png') }}" class=" w-12 rounded-full" alt="">
-                    </div>
+
                     <div class="flex flex-shrink-0 items-center">
                         <h2 class="text-lg sm:left-0 font-semibold text-white ml-2">E-mading <span
                                 class="text-yellow-400 font-bold">
@@ -50,7 +48,7 @@
                 </div>
                 <div
                     class="absolute lg:inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    @guest
+                    {{-- @guest
                         <div class="opacity-0 lg:opacity-100 text-white flex justify-between items-center px-4">
                             <a href="/login" class="text-base mr-2 hover:scale-105 transition duration-300">Login</a>
                             <span class="cursor-pointer">|</span>
@@ -83,6 +81,9 @@
                                     role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                             </div>
                         @endguest
+                    </div> --}}
+                    <div class="px-2">
+                        <img src="{{ asset('assets/img/logo-osis.png') }}" class=" w-12 rounded-full" alt="">
                     </div>
                 </div>
             </div>

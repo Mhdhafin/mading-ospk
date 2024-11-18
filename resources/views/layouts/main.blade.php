@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="./assets/img/ospk_logo.png" />
     <title> OSPK SMKN 65 | @yield('title')</title>
     {{-- Alpine js --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     {{-- Font Awesome --}}
     <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 
     <link rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/material.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/material.css') }}"> --}}
     <style>
         /* .custom-bg {
             width: 100%;

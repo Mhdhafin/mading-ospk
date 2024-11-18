@@ -87,12 +87,13 @@ class AdminController extends Controller
 
     public function destroyUser($id)
     {
-        $user = User::findOrFail($id);
 
-        Storage::delete($user->image);
+        // $user = User::findOrFail($id);
 
-        $user->delete();
+        // Storage::delete($user->image);
 
-        return redirect('/users')->with('status', 'User Behasil Dihapus!');
+        // $user->delete();
+
+        // return redirect('/users')->with('status', 'User Behasil Dihapus!');
     }
 }

@@ -59,47 +59,49 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($faqs as $item) --}}
-                    <tr>
-                        <td class=" p-4 border-b  border-slate-200">
-                            <p class="text-sm text-slate-500">
-                                {{-- {{ Str::limit($item->question, 50) }} --}}
-                            </p>
-                        </td>
-                        <td class=" p-4 border-b border-slate-200">
-                            <p class="text-sm font-semibold text-slate-700">
-                                {{-- {{ Str::limit($item->answer, 50) }} --}}
-                            </p>
-                        </td>
-                        <td class=" p-4 flex items-center gap-4 border-b border-slate-200">
-                            <button
-                                class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-slate-900 transition-all hover:bg-slate-900/10 active:bg-slate-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                type="button" data-dialog-target=">
-                                <span class="absolute
+                    @foreach ($faqs as $item)
+                        <tr>
+                            <td class=" p-4 border-b  border-slate-200">
+                                <p class="text-sm text-slate-500">
+                                    {{ Str::limit($item->question, 50) }}
+                                </p>
+                            </td>
+                            <td class=" p-4 border-b border-slate-200">
+                                <p class="text-sm font-semibold text-slate-700">
+                                    {{ Str::limit($item->answer, 50) }}
+                                </p>
+                            </td>
+                            <td class=" p-4 flex items-center gap-4 border-b border-slate-200">
+                                <button
+                                    class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-slate-900 transition-all hover:bg-slate-900/10 active:bg-slate-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    type="button" data-dialog-target="">
+                                    <span
+                                        class="absolute
                                 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    aria-hidden="true" class="w-4 h-4">
-                                    <path
-                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
-                                    </path>
-                                </svg>
-                                </span>
-                            </button>
-
-                            <form id="confirm" action="/dashboard/faq" method="post">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" id="delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 " fill="red"
-                                        viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                        <path
-                                            d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
-                                    </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                            aria-hidden="true" class="w-4 h-4">
+                                            <path
+                                                d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                            </path>
+                                        </svg>
+                                    </span>
                                 </button>
-                            </form>
-                        </td>
 
-                    </tr>
+                                <form id="confirm" action="/dashboard/faq" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" id="delete">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 " fill="red"
+                                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                            <path
+                                                d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
+                                        </svg>
+                                    </button>
+                                </form>
+                            </td>
+
+                        </tr>
+                    @endforeach
 
                     {{-- <div data-dialog-backdrop=""
                         class="fixed left-0 top-0 inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">
@@ -194,7 +196,7 @@
 
 
     {{-- TAMBAH DATA --}}
-    {{-- <div data-dialog-backdrop="dialog"
+    <div data-dialog-backdrop="dialog"
         class="absolute left-0 top-0 inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">
         <div data-dialog="dialog"
             class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-slate-700 shadow-md">
@@ -214,7 +216,7 @@
                         </label>
                         <input type="text" name="question" required
                             class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
-                            placeholder="Enter your text" />
+                            placeholder="Question.." />
                         @error('question')
                             <p class="text-red-500 text-xs mt-1">
                                 {{ $message }}
@@ -227,7 +229,7 @@
                         </label>
                         <input type="text" name="answer" required
                             class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
-                            placeholder="Enter the email" />
+                            placeholder="Answer.." />
                         @error('answer')
                             <p class="text-red-500 text-xs mt-1">
                                 {{ $message }}
@@ -260,7 +262,7 @@
             </form>
 
         </div>
-    </div> --}}
+    </div>
 
     @push('script')
         <script src={{ asset('assets/js/modal.js') }}></script>
