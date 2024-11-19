@@ -19,72 +19,73 @@
                     <form class="w-full" action="/dashboard/structure" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="flex w-full flex-col gap-4 p-4">
-                            <div class="flex w-full flex-col  gap-4 ">
+                            <div class="flex w-full flex-col gap-4 ">
                                 <div class="w-full ">
                                     <label class="block mb-2 text-sm text-slate-600">
-                                        Heading
+                                        Title
                                     </label>
-                                    <input type="text" name="heading"
+                                    <input type="text" name="title"
                                         class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                        placeholder="Heading" />
-                                </div>
-                                <div class="w-full ">
-                                    <div class="relative w-full min-w-[200px]">
-                                        <textarea name="description"
-                                            class="peer h-full min-h-[100px] w-full resize-none rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
-                                            placeholder=" "></textarea>
-                                        <label
-                                            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                                            Description
-                                        </label>
-                                    </div>
+                                        placeholder="Title.." />
                                 </div>
 
-                                <label class="block mt-4 text-sm">
-                                    <span class="text-slate-600 ">Image</span>
-                                    <div class="flex items-center justify-center w-full">
-                                        <label for="dropzone-file"
-                                            class="flex flex-col relative py-4 items-center justify-center w-full rounded-lg  border-2 border-gray-300 border-dashed cursor-pointer bg-gray-50  dark:bg-gray-200 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                            <img id="img-preview" class=" rounded-lg object-cover h-1/2 w-1/2 hidden">
-                                            <div class="flex flex-col file items-center justify-center pt-5 pb-6">
-                                                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 20 16">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                                </svg>
-                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                                        class="font-semibold">Click
-                                                        to upload</span> or drag and drop</p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
-                                                    (MAX.
-                                                    800x400px)
-                                                </p>
+
+                                <div id="dynamic-fields">
+                                    <div class="field">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div class="w-full ">
+                                                <label class="block mb-2 text-sm text-slate-600">
+                                                    Name
+                                                </label>
+                                                <input type="text" name="employees[0][name]"
+                                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                                    placeholder="Name.." />
                                             </div>
-                                            <input id="dropzone-file" name="image" onchange="previewImage()"
-                                                id="image imgInp" value="{{ old('image') }}" type="file"
-                                                class="hidden image " />
-                                            @error('image')
-                                                <p class="text-red-500 text-xs mt-1">
-                                                    {{ $massage }}
-                                                </p>
-                                            @enderror
-                                        </label>
+                                            <div class="w-full ">
+                                                <label class="block mb-2 text-sm text-slate-600">
+                                                    Position
+                                                </label>
+                                                <input type="text" name="employees[0][position]"
+                                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                                    placeholder="Position.." />
+                                            </div>
+                                        </div>
                                     </div>
-                                </label>
+
+                                </div>
 
                             </div>
 
 
                         </div>
-                        <div class="p-6 pt-0">
+                        <div class="p-6 pt-0 flex items-center gap-4">
+                            <button type="button" id="add-field"
+                                class="w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Add
+                                Field</button>
                             <button
                                 class="w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 type="submit">
                                 Add Data
                             </button>
+                        </div>
                     </form>
+                    {{-- <form action="/dashboard/structure" method="POST">
+                        @csrf
+                        <div>
+                            <label for="title">Heading:</label>
+                            <input type="text" name="title" id="title" required>
+                        </div>
+                        <div id="dynamic-fields">
+                            <div class="field">
+                                <label>Nama:</label>
+                                <input type="text" name="employees[0][name]" required>
+                                <label>Position:</label>
+                                <input type="text" name="employees[0][position]" required>
+                            </div>
+                        </div>
+
+                        <button type="submit">Save</button>
+                    </form> --}}
                 </div>
             </div>
         </div>
@@ -103,7 +104,7 @@
                 </button>
             </div>
             <div class="p-6 overflow-x-scroll px-0 pt-0 pb-2">
-                <table class="w-full min-w-[640px] table-auto">
+                {{-- <table class="w-full min-w-[640px] table-auto">
                     <thead>
                         <tr>
                             <th class="border-b border-blue-gray-50 py-3 px-5 text-left">
@@ -167,7 +168,139 @@
                         </tr>
 
                     </tbody>
-                </table>
+                </table> --}}
+                <div class="p6 w-1/2 mx-auto">
+                    <!-- Accordion Item 1 -->
+                    @foreach ($structure as $data)
+                        <div class="border-b border-slate-200">
+                            <div class="flex items-center gap-4">
+                                <button onclick="toggleAccordion({{ $data->id }})"
+                                    class="w-full flex justify-between items-center py-5 text-slate-800">
+                                    <span>{{ $data->title }}</span>
+                                    <span id="icon-{{ $data->id }}"
+                                        class="text-slate-800 transition-transform duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                            class="w-4 h-4">
+                                            <path
+                                                d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <form id="confirm" action="/dashboard/structure/{{ $data->id }}" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" id="delete">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 " fill="red"
+                                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                            <path
+                                                d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+
+                            <div id="content-{{ $data->id }}"
+                                class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+
+
+
+                                @foreach ($data->employees as $employee)
+                                    <div class="pb-5 text-sm text-slate-500">
+                                        <div class="flex items-center">
+                                            <h4 class="mr-2">{{ $employee->position }}</h4>
+
+                                            <span>{{ $employee->name }} </span>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+
+
+                            </div>
+                        </div>
+                    @endforeach
+
+                    {{-- <!-- Accordion Item 2 -->
+                    <div class="border-b border-slate-200">
+                        <button onclick="toggleAccordion(2)"
+                            class="w-full flex justify-between items-center py-5 text-slate-800">
+                            <span>How to use Material Tailwind?</span>
+                            <span id="icon-2" class="text-slate-800 transition-transform duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                    class="w-4 h-4">
+                                    <path
+                                        d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="content-2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+
+                            <div class="pb-5 text-sm text-slate-500">
+                                <div class="flex items-center">
+                                    <h4 class="mr-2">Position: </h4>
+
+                                    <span>Muhammad Dhafin </span>
+                                </div>
+                            </div>
+                            <div class="pb-5 text-sm text-slate-500">
+                                <div class="flex items-center">
+                                    <h4 class="mr-2">Position: </h4>
+
+                                    <span>Muhammad Dhafin </span>
+                                </div>
+                            </div>
+                            <div class="pb-5 text-sm text-slate-500">
+                                <div class="flex items-center">
+                                    <h4 class="mr-2">Position: </h4>
+
+                                    <span>Muhammad Dhafin </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div class="border-b border-slate-200">
+                        <button onclick="toggleAccordion(3)"
+                            class="w-full flex justify-between items-center py-5 text-slate-800">
+                            <span>What can I do with Material Tailwind?</span>
+                            <span id="icon-3" class="text-slate-800 transition-transform duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                    class="w-4 h-4">
+                                    <path
+                                        d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="content-3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="pb-5 text-sm text-slate-500">
+                                <div class="flex items-center">
+                                    <h4 class="mr-2">Position: </h4>
+
+                                    <span>Muhammad Dhafin </span>
+                                </div>
+                            </div>
+                            <div class="pb-5 text-sm text-slate-500">
+                                <div class="flex items-center">
+                                    <h4 class="mr-2">Position: </h4>
+
+                                    <span>Muhammad Dhafin </span>
+                                </div>
+                            </div>
+                            <div class="pb-5 text-sm text-slate-500">
+                                <div class="flex items-center">
+                                    <h4 class="mr-2">Position: </h4>
+
+                                    <span>Muhammad Dhafin </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div> --}}
+                </div>
             </div>
         </div>
 
@@ -199,6 +332,8 @@
             }
         </script>
     @endpush
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById('delete').addEventListener('click', function(e) {
@@ -219,5 +354,33 @@
                 }
             });
         });
+
+        //         function toggleAccordion(index) {
+        //             const content = document.getElementById(`content-${index}`);
+        //             const icon = document.getElementById(`icon-${index}`);
+
+        //             // SVG for Minus icon
+        //             const minusSVG = `
+    //     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+    //       <path d="M3.75 7.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z" />
+    //     </svg>
+    //   `;
+
+        //             // SVG for Plus icon
+        //             const plusSVG = `
+    //     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+    //       <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+    //     </svg>
+    //   `;
+
+        //             // Toggle the content's max-height for smooth opening and closing
+        //             if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+        //                 content.style.maxHeight = "0";
+        //                 icon.innerHTML = plusSVG;
+        //             } else {
+        //                 content.style.maxHeight = content.scrollHeight + "px";
+        //                 icon.innerHTML = minusSVG;
+        //             }
+        //         }
     </script>
 @endsection

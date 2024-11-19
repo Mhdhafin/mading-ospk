@@ -23,10 +23,9 @@
     <section class="hero bg-center bg-no-repeat bg-gray-700 bg-blend-multiply">
         <div class="hero-bg"></div>
         <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-            <h1 class="mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">Osis Smkn
-                65 Jakarta</h1>
-            <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">Here at Flowbite we focus on
-                markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+            <h1 class="mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">
+                {{ $hero->title }}</h1>
+            <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">{{ $hero->subtitle }}</p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                 <a href="#"
                     class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-yellow-400 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
@@ -51,19 +50,13 @@
             <div class="flex flex-wrap">
                 <div class="md:w-1/3  self-center w-full">
                     <div class="">
-                        <img src="{{ asset('assets/img/ospk_logo.PNG') }}" class="w-80 mx-auto" alt="">
+                        <img src="/storage/{{ $profile->image }}" class="w-80 mx-auto" alt="">
                     </div>
                 </div>
                 <div class="lg:w-4/6 self-end mt-12 w-full">
-                    <h2 class="">Tentang Kami</h2>
-                    <p class="text-base lg:text-base mb-32 w-full max-w-3xl">Organisasi Siswa Intra SMKN 65 Jakarta,
-                        didirikan
-                        tahun
-                        1999
-                        sebagai Sekolah Menengah Kejuruan Negeri 65 Jakarta. Sekolah ini menawarkan berbagai jurusan,
-                        seperti Teknik Komputer dan Jaringan (TKJ), Teknik Bisnis Sepeda Motor (TBSM), Rekayasa Perangkat
-                        Lunak (RPL), serta Tata Boga dan Tata Busana, dengan fokus pada pendidikan vokasional dan
-                        keterampilan industri.....
+                    <h2 class="">{{ $profile->heading }}</h2>
+                    <p class="text-base lg:text-base mb-32 w-full max-w-3xl">
+                        {{ Str::limit($profile->description, 200) }}
                     </p>
 
                 </div>
@@ -89,10 +82,10 @@
         <div class="w-full px-4">
             <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" class="text-center mx-auto">
                 <h2 class="text-2xl font-bold text-red-500 mb-2">Visi & Misi</h2>
-                <p class="text-sm md:w-1/2 text-slate-500 w-full mx-auto">
+                {{-- <p class="text-sm md:w-1/2 text-slate-500 w-full mx-auto">
                     Explore our services and see how we can help you achieve your goals. Feel free to browse through, and
                     don't hesitate to reach out for any questions or personalized solutions tailored to your needs!
-                </p>
+                </p> --}}
             </div>
         </div>
         <div class="block md:flex gap-8 px-24 lg:flex mt-8  py-6 justify-center  items-center">
@@ -102,12 +95,10 @@
                 class="block bg-red-600 lg:mb-0 mb-8 max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:scale-105 transition
                 duration-300 ">
 
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Visi</h5>
-                <p class="font-normal text-yellow-400 ">Here are the biggest enterprise technology
-                    acquisitions
-                    of 2021 so far, in reverse chronological order.</p>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $visimisi->title }}</h5>
+                <p class="font-normal text-yellow-400 ">{{ $visimisi->subtitle }}</p>
             </a>
-            <a href="#"
+            {{-- <a href="#"
                 class="block bg-red-600 max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:scale-105 transition
                 duration-300 ">
 
@@ -115,7 +106,7 @@
                 <p class="font-normal text-yellow-400 ">Here are the biggest enterprise technology
                     acquisitions
                     of 2021 so far, in reverse chronological order.</p>
-            </a>
+            </a> --}}
         </div>
     </section>
 
@@ -126,25 +117,25 @@
                 <h2 class="text-xl font-semibold text-vnet-blue mb-2">FAQ - Tanya-tanya seputar sekolah YUK!</h2>
                 <!-- Accordion Item 1 -->
                 <div class="border-b border-slate-200">
-                    <button onclick="toggleAccordion(1)"
+                    <button onclick="toggleAccordion({{ $faq->id }})"
                         class="w-full flex justify-between items-center py-5 text-slate-800">
-                        <span>What is Material Tailwind?</span>
-                        <span id="icon-1" class="text-slate-800 transition-transform duration-300">
+                        <span>{{ $faq->question }}</span>
+                        <span id="icon-{{ $faq->id }}" class="text-slate-800 transition-transform duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                 <path
                                     d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
                             </svg>
                         </span>
                     </button>
-                    <div id="content-1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <div id="content-{{ $faq->id }}"
+                        class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
                         <div class="pb-5 text-sm text-slate-500">
-                            Material Tailwind is a framework that enhances Tailwind CSS with additional styles and
-                            components.
+                            {{ $faq->answer }}
                         </div>
                     </div>
                 </div>
 
-                <!-- Accordion Item 2 -->
+                {{-- <!-- Accordion Item 2 -->
                 <div class="border-b border-slate-200">
                     <button onclick="toggleAccordion(2)"
                         class="w-full flex justify-between items-center py-5 text-slate-800">
@@ -181,7 +172,7 @@
                             design.
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

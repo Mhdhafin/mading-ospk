@@ -8,24 +8,32 @@ use App\Models\Structure;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
 
 class StructureController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.structure');
+        $structure = Structure::with('employees')->get();
+
+        return view('admin.pages.structure', compact('structure'));
     }
 
 
     public function store(StoreStructureRequest $request)
     {
+
         $data = $request->validated();
 
-        $year = Carbon::now()->format('Y');
-        $file = $request->file('image');
-        $data['image'] = $file ? $file->storeAs("image-Structure/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
+        $data = Structure::create([
+            'title' =>  $request->title
+        ]);
 
-        Structure::create($data);
+        foreach ($request->employees as $employee) {
+            $data->employees()->create($employee);
+        }
+
+        toast('Structure Added', 'success');
 
         return redirect()->back();
     }
@@ -36,13 +44,16 @@ class StructureController extends Controller
     {
         $data = $request->validated();
 
-        $data = $structure->$id;
+        $data->update([
+            'title' =>  $request->title
+        ]);
 
-        $year = Carbon::now()->format('Y');
-        $file = $request->file('image');
-        $data['image'] = $file ? $file->storeAs("image-Structure/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
+        $data->employees()->delete();
+        foreach ($request->employees as $employee) {
+            $data->employees()->create($employee);
+        }
 
-        $data->save();
+        toast('Structure Edited', 'success');
 
         return redirect()->back();
     }
@@ -57,6 +68,8 @@ class StructureController extends Controller
         } else {
             $id->delete();
         }
+
+        toast('Structure Deleted', 'success');
 
         return redirect()->back();
     }

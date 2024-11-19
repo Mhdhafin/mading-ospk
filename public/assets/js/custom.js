@@ -25,3 +25,32 @@ function toggleAccordion(index) {
         icon.innerHTML = minusSVG;
     }
 }
+
+let fieldCount = 1;
+document.getElementById("add-field").addEventListener("click", function () {
+    const container = document.getElementById("dynamic-fields");
+    const newField = document.createElement("div");
+    newField.classList.add("field");
+    newField.innerHTML = `
+                                <div class="grid grid-cols-2 gap-4">
+                                            <div class="w-full ">
+                                                <label class="block mb-2 text-sm text-slate-600">
+                                                    Name
+                                                </label>
+                                                <input type="text" name="employees[${fieldCount}][name]"
+                                                    class="w-full bg-transparent placeholder:text-slate-40 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                                    placeholder="Name.." />
+                                            </div>
+                                            <div class="w-full ">
+                                                <label class="block mb-2 text-sm text-slate-600">
+                                                    Position
+                                                </label>
+                                                <input type="text" name="employees[${fieldCount}][position]"
+                                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                                    placeholder="Position.." />
+                                            </div>
+                                        </div>
+                                `;
+    container.appendChild(newField);
+    fieldCount++;
+});

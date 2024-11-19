@@ -11,7 +11,13 @@ use App\Http\Controllers\StructureController;
 use App\Http\Controllers\TestimonalController;
 use App\Http\Controllers\VisiMisiController;
 use App\Mail\SendMail;
+use App\Models\Faq;
+use App\Models\Hero;
 use App\Models\Post;
+use App\Models\Profile;
+use App\Models\Structure;
+use App\Models\Testimonal;
+use App\Models\VisiMisi;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -29,10 +35,18 @@ Route::get('/blog', function () {
 
 
 Route::get('/', function () {
-    return view('pages.home');
+    $hero = Hero::first();
+    $profile = Profile::first();
+    $visimisi = VisiMisi::get();
+    $faq = Faq::get();
+
+    return view('pages.home', compact('hero', 'profile', 'visimisi', 'faq'));
 });
 Route::get('/about', function () {
-    return view('pages.about');
+    $profile = Profile::get();
+    $structure = Structure::get();
+    $testimonal = Testimonal::get();
+    return view('pages.about', compact('profile', 'structure', 'testimonal'));
 });
 // Route::get('/posts', [BlogController::class, 'index']);
 // Route::get('/posts/{post:slug}', [BlogController::class, 'show']);

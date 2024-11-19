@@ -22,7 +22,10 @@ class StoreStructureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'employees' => 'required|array',
+            'employees.*.name' => 'required|string|max:255',
+            'employees.*.position' => 'required|string|max:255',
         ];
     }
 }

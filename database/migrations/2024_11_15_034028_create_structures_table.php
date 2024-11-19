@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('structures', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('heading');
-            $table->string('position_1')->nullable();
-            $table->string('position_2')->nullable();
-            $table->string('position_3')->nullable();
-            $table->string('name_1')->nullable();
-            $table->string('name_2')->nullable();
-            $table->string('name_3')->nullable();
+            $table->id();
+            $table->string('title');
+            // $table->string('position_1')->nullable();
+            // $table->string('position_2')->nullable();
+            // $table->string('position_3')->nullable();
+            // $table->string('name_1')->nullable();
+            // $table->string('name_2')->nullable();
+            // $table->string('name_3')->nullable();
             $table->timestamps();
         });
     }

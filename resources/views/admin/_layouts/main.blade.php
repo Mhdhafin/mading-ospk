@@ -41,7 +41,9 @@
 
     @include('sweetalert::alert')
 
+
     <script src="./assets/js/script.js"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
     @stack('script')
     @stack('custom_script')
 </body>
