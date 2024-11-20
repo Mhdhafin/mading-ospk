@@ -57,9 +57,11 @@ class HeroController extends Controller
 
         if ($id->image) {
             Storage::disk('public')->delete($id->image);
-        } else {
-            $id->delete();
         }
+
+        $id->delete();
+
+        // toast('Hero Deleted', 'success');
 
         return redirect()->back();
     }

@@ -25,13 +25,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/blog', function () {
-    $posts = Post::get();
-    return view('pages.blog', [
-        'title' => 'Postingan',
-        'post' => $posts
-    ]);
-});
 
 
 Route::get('/', function () {
@@ -42,12 +35,21 @@ Route::get('/', function () {
 
     return view('pages.home', compact('hero', 'profile', 'visimisi', 'faq'));
 });
+
+
 Route::get('/about', function () {
-    $profile = Profile::get();
-    $structure = Structure::get();
+    $profile = Profile::first();
+    $structure = Structure::with('employees')->get();
     $testimonal = Testimonal::get();
     return view('pages.about', compact('profile', 'structure', 'testimonal'));
 });
+
+Route::get('/blog', function () {
+    $posts = Post::get();
+    return view('pages.blog', compact('posts'));
+});
+
+
 // Route::get('/posts', [BlogController::class, 'index']);
 // Route::get('/posts/{post:slug}', [BlogController::class, 'show']);
 

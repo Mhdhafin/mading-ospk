@@ -48,7 +48,7 @@
     <section class="bg-slate-200 pt-24 pb-8">
         <div class="w-full  px-4">
             <div class="flex flex-wrap">
-                <div class="md:w-1/3  self-center w-full">
+                <div class="md:w-1/3 self-center w-full">
                     <div class="">
                         <img src="/storage/{{ $profile->image }}" class="w-80 mx-auto" alt="">
                     </div>
@@ -91,13 +91,16 @@
         <div class="block md:flex gap-8 px-24 lg:flex mt-8  py-6 justify-center  items-center">
 
 
-            <a href="#"
-                class="block bg-red-600 lg:mb-0 mb-8 max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:scale-105 transition
+            @foreach ($visimisi as $data)
+                <a href="#"
+                    class="block bg-red-600 lg:mb-0 mb-8 max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:scale-105 transition
                 duration-300 ">
 
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $visimisi->title }}</h5>
-                <p class="font-normal text-yellow-400 ">{{ $visimisi->subtitle }}</p>
-            </a>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $data->title }}
+                    </h5>
+                    <p class="font-normal text-yellow-400 ">{{ $data->subtitle }}</p>
+                </a>
+            @endforeach
             {{-- <a href="#"
                 class="block bg-red-600 max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:scale-105 transition
                 duration-300 ">
@@ -116,24 +119,27 @@
             <div class="w-full sm:w-10/12 md:w-1/2 my-1">
                 <h2 class="text-xl font-semibold text-vnet-blue mb-2">FAQ - Tanya-tanya seputar sekolah YUK!</h2>
                 <!-- Accordion Item 1 -->
-                <div class="border-b border-slate-200">
-                    <button onclick="toggleAccordion({{ $faq->id }})"
-                        class="w-full flex justify-between items-center py-5 text-slate-800">
-                        <span>{{ $faq->question }}</span>
-                        <span id="icon-{{ $faq->id }}" class="text-slate-800 transition-transform duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-                                <path
-                                    d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
-                            </svg>
-                        </span>
-                    </button>
-                    <div id="content-{{ $faq->id }}"
-                        class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="pb-5 text-sm text-slate-500">
-                            {{ $faq->answer }}
+                @foreach ($faq as $data)
+                    <div class="border-b border-slate-200">
+                        <button onclick="toggleAccordion({{ $data->id }})"
+                            class="w-full flex justify-between items-center py-5 text-slate-800">
+                            <span>{{ $data->question }}</span>
+                            <span id="icon-{{ $data->id }}" class="text-slate-800 transition-transform duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                    class="w-4 h-4">
+                                    <path
+                                        d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="content-{{ $data->id }}"
+                            class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="pb-5 text-sm text-slate-500">
+                                {{ $data->answer }}
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
                 {{-- <!-- Accordion Item 2 -->
                 <div class="border-b border-slate-200">

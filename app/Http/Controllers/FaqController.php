@@ -50,6 +50,8 @@ class FaqController extends Controller
             $id->delete();
         }
 
+        toast('Faq Deleted', 'success');
+
         return redirect()->back();
     }
 }

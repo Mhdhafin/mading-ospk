@@ -53,6 +53,7 @@ class VisiMisiController extends Controller
 
         $id->delete();
 
+        toast('Visi Misi Deleted', 'success');
 
         return redirect()->back();
     }

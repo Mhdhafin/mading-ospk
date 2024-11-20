@@ -13,7 +13,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.profile');
+
+        $profile = Profile::latest()->get();
+        return view('admin.pages.profile', compact('profile'));
     }
 
     public function create()
@@ -61,9 +63,12 @@ class ProfileController extends Controller
 
         if ($id->image) {
             Storage::disk('public')->delete($id->image);
-        } else {
-            $id->delete();
         }
+
+        $id->delete();
+
+
+        toast('Profile Deleted', 'success');
 
         return redirect()->back();
     }
