@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStructureRequest;
 use App\Http\Requests\UpdateStructureRequest;
 use App\Models\Structure;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Storage;
 use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
 
@@ -23,6 +22,8 @@ class StructureController extends Controller
     public function store(StoreStructureRequest $request)
     {
 
+        // dd($request);
+
         $data = $request->validated();
 
         $data = Structure::create([
@@ -32,7 +33,6 @@ class StructureController extends Controller
         foreach ($request->employees as $employee) {
             $data->employees()->create($employee);
         }
-
         toast('Structure Added', 'success');
 
         return redirect()->back();

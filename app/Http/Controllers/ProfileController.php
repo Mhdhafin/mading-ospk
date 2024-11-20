@@ -13,7 +13,8 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.profile');
+        $profile = Profile::latest()->get();
+        return view('admin.pages.profile', compact('profile'));
     }
 
     public function create()
@@ -64,6 +65,8 @@ class ProfileController extends Controller
         } else {
             $id->delete();
         }
+
+        toast('Profile Deleted', 'success');
 
         return redirect()->back();
     }
