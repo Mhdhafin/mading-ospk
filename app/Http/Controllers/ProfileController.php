@@ -13,6 +13,10 @@ class ProfileController extends Controller
 {
     public function index()
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> dd53dfd35a88b3d43fbdfd694066c6170dc7622e
         $profile = Profile::latest()->get();
         return view('admin.pages.profile', compact('profile'));
     }

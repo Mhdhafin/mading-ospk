@@ -65,9 +65,11 @@ class StructureController extends Controller
 
         if ($id->image) {
             Storage::disk('public')->delete($id->image);
-        } else {
-            $id->delete();
         }
+
+        $id->delete();
+
+
 
         toast('Structure Deleted', 'success');
 

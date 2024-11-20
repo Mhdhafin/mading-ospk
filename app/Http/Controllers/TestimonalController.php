@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProfileRequest;
+use App\Http\Requests\StoreTestimonalRequest;
 use App\Http\Requests\UpdateTestimonalRequest;
 use App\Models\Testimonal;
 use Carbon\Carbon;
@@ -13,10 +14,12 @@ class TestimonalController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.testimonal');
+
+        $testimonal = Testimonal::latest()->get();
+        return view('admin.pages.testimonal', compact('testimonal'));
     }
 
-    public function store(StoreProfileRequest $request)
+    public function store(StoreTestimonalRequest $request)
     {
         $data = $request->validated();
 
@@ -24,7 +27,13 @@ class TestimonalController extends Controller
         $file = $request->file('image');
         $data['image'] = $file ? $file->storeAs("image-Testimonal/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
 
+        if (!$data['image']) {
+            $data['image'] =  './assets/img/profile.jpeg';
+        }
+
         Testimonal::create($data);
+
+        toast('Testimonal Created', 'success');
 
         return redirect()->back();
     }
@@ -53,9 +62,11 @@ class TestimonalController extends Controller
 
         if ($id->image) {
             Storage::disk('public')->delete($id->image);
-        } else {
-            $id->delete();
         }
+
+        $id->delete();
+
+        toast('Testimonal Deleted', 'success');
 
         return redirect()->back();
     }

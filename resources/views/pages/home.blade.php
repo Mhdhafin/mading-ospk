@@ -48,7 +48,7 @@
     <section class="bg-slate-200 pt-24 pb-8">
         <div class="w-full  px-4">
             <div class="flex flex-wrap">
-                <div class="md:w-1/3  self-center w-full">
+                <div class="md:w-1/3 self-center w-full">
                     <div class="">
                         <img src="/storage/{{ $profile->image }}" class="w-80 mx-auto" alt="">
                     </div>
@@ -94,7 +94,7 @@
             @foreach ($visimisi as $data)
                 <a href="#"
                     class="block bg-red-600 lg:mb-0 mb-8 max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:scale-105 transition
-            duration-300 ">
+                duration-300 ">
 
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $data->title }}
                     </h5>
