@@ -102,7 +102,7 @@
                                     </p>
                                 </td>
                                 <td class="py-3  px-5 border-b border-blue-gray-50">
-                                    <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
+                                    <p class="block w-1/2 antialiased font-sans text-xs font-semibold text-blue-gray-600">
                                         {{ $data->subtitle }}
                                     </p>
                                 </td>

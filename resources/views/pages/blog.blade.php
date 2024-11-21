@@ -13,22 +13,22 @@
     <section class="pt-24 pb-32 rounded-b-md bg-slate-200">
 
         <div class="w-full px-4 flex justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            @forelse ($post as $posts)
+            @forelse ($posts as $post)
                 <div class="shadow-lg hover:scale-105 bg-white  transition duration-300 rounded-md max-w-sm mx-auto">
-                    <img src="/storage/{{ $posts->image }}" role="presentation"
+                    <img src="/storage/{{ $post->image }}" role="presentation"
                         class="object-cover w-full rounded h-44 dark:bg-gray-500">
                     <div class="p-6 space-y-2 lg:col-span-5">
                         <span
-                            class="bg-yellow-300 p-2 rounded-full text-xs text-gray-600">{{ $posts->created_at->format('j F Y') }}</span>
+                            class="bg-yellow-300 p-2 rounded-full text-xs text-gray-600">{{ $post->created_at->format('j F Y') }}</span>
 
-                        <h2 class="text-2xl  font-semibold ">{{ $posts->title }}</h2>
+                        <h2 class="text-2xl  font-semibold ">{{ $post->title }}</h2>
 
-                        <p class="pb-5 text-base">{{ Str::limit($posts->content, 40, '...') }}</p>
+                        <p class="pb-5 text-base">{{ Str::limit($post->content, 40, '...') }}</p>
 
 
 
                         <a class="group relative inline-flex items-center overflow-hidden rounded bg-red-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-red-500"
-                            href="/posts/{{ $posts->slug }}">
+                            href="/posts/{{ $post->slug }}">
                             <span class="absolute -end-full transition-all group-hover:end-4">
                                 <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">

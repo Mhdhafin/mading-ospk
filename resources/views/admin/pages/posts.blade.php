@@ -144,42 +144,45 @@
                     </thead>
                     <tbody>
 
-                        <tr>
-                            <td class="py-3  px-5 border-b border-blue-gray-50">
-                                <div class="flex items-center gap-4">
-                                    <img src="" alt="" class="w-full relative rounded-md" />
-                                </div>
-                            </td>
-                            <td class="py-3  px-5 border-b border-blue-gray-50">
-                                <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
+                        @foreach ($posts as $data)
+                            <tr>
+                                <td class="py-3  px-5 border-b border-blue-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <img src="/storage/{{ $data->image }}" alt=""
+                                            class="w-full max-w-[200px] relative rounded-md" />
+                                    </div>
+                                </td>
+                                <td class="py-3  px-5 border-b border-blue-gray-50">
+                                    <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
+                                        {{ $data->title }}
+                                    </p>
+                                </td>
+                                <td class="py-3  px-5 border-b border-blue-gray-50">
+                                    <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
+                                        {{ $data->author }}
+                                    </p>
+                                </td>
+                                <td class="py-3  px-5 border-b border-blue-gray-50">
+                                    <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
+                                        {{ $data->content }}
+                                    </p>
+                                </td>
 
-                                </p>
-                            </td>
-                            <td class="py-3  px-5 border-b border-blue-gray-50">
-                                <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
-
-                                </p>
-                            </td>
-                            <td class="py-3  px-5 border-b border-blue-gray-50">
-                                <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
-
-                                </p>
-                            </td>
-
-                            <td class="py-3  px-5 border-b border-blue-gray-50">
-                                <form id="confirm" action=" " method="post">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" id="delete">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 " fill="red"
-                                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                            <path
-                                                d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
-                                        </svg>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                                <td class="py-3  px-5 border-b border-blue-gray-50">
+                                    <form id="confirm" action="/dashboard/posts/{{ $data->id }}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" id="delete">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 " fill="red"
+                                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                <path
+                                                    d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
 
                     </tbody>
                 </table>
