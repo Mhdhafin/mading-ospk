@@ -132,6 +132,7 @@
                                 </svg>
                             </span>
                         </button>
+
                         <div id="content-{{ $data->id }}"
                             class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
                             <div class="pb-5 text-sm text-slate-500">
@@ -221,5 +222,7 @@
             </div>
         </div>
     </section>
+    {{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
+
 
 @endsection

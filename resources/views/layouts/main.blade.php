@@ -9,7 +9,7 @@
     <title> OSPK SMKN 65 | @yield('title')</title>
     {{-- Alpine js --}}
     <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <script src="https://cdn.tailwindcss.com"></script>
     {{-- Font Awesome --}}
     <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 

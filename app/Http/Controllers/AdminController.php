@@ -13,17 +13,12 @@ class AdminController extends Controller
     public function index()
     {
 
-        $posts = Post::all()->count();
+        $post = Post::all()->count();
 
-        $user = User::all()->count();
-        $users = User::all();
+        $users = User::all()->count();
+        $user = User::latest()->get();
 
-        return view('admin.pages.dashboard', [
-            'title' => 'Admin Page',
-            'post' => $posts,
-            'users' => $user,
-            'user' => $users
-        ]);
+        return view('admin.pages.dashboard', compact('post', 'user', 'users'));
     }
 
     public function edit(User $user)

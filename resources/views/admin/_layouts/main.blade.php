@@ -11,12 +11,13 @@
     <meta name="description">
 
     <link rel="shortcut icon" href="./assets/img/ospk_logo.png" />
-    <title>Ospk SMKN 65 | @yield('title')</title>
+    <title>Admin Mading OSPK | @yield('title')</title>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     @stack('style')

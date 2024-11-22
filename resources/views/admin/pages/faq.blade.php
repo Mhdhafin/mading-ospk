@@ -74,7 +74,7 @@
                             <td class=" p-4 flex items-center gap-4 border-b border-slate-200">
                                 <button
                                     class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-slate-900 transition-all hover:bg-slate-900/10 active:bg-slate-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                    type="button" data-dialog-target="">
+                                    type="button" data-dialog-target="{{ $item->id }}">
                                     <span
                                         class="absolute
                                 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -101,76 +101,77 @@
                             </td>
 
                         </tr>
+
+                        <div data-dialog-backdrop="{{ $item->id }}"
+                            class="fixed left-0 top-0 inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">
+                            <div data-dialog="{{ $item->id }}"
+                                class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-slate-700 shadow-md">
+                                <div class="flex flex-col p-6">
+                                    <h4 class="text-2xl mb-1 font-semibold text-slate-700">
+                                        Edit FAQ Information
+                                    </h4>
+                                    <p class="mb-3 mt-1 text-slate-400">
+                                        Edit your information
+                                    </p>
+
+                                    <form action="/dashboard/faq/{{ $item->id }}" method="POST">
+                                        @method('PUT')
+                                        @csrf
+                                        <div class="w-full max-w-sm min-w-[200px] mt-4">
+                                            <label class="block mb-1 text-sm text-slate-700">
+                                                Question
+                                            </label>
+                                            <input type="text" name="question" required value=""
+                                                class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
+                                                placeholder="Enter your text" />
+                                            @error('question')
+                                                <p class="text-red-500 text-xs mt-1">
+                                                    {{ $message }}
+                                                </p>
+                                            @enderror
+                                        </div>
+                                        <div class="w-full max-w-sm min-w-[200px] mt-4">
+                                            <label class="block mb-1 text-sm text-slate-700">
+                                                Answer
+                                            </label>
+                                            <input type="text" name="answer" required value=""
+                                                class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
+                                                placeholder="Enter the email" />
+                                            @error('answer')
+                                                <p class="text-red-500 text-xs mt-1">
+                                                    {{ $message }}
+                                                </p>
+                                            @enderror
+                                        </div>
+
+                                </div>
+                                <div class="p-6 pt-0">
+                                    <div class="flex space-x-2">
+                                        <button
+                                            class="w-full mx-auto select-none rounded border border-red-600 py-2 px-4 text-center text-sm font-semibold text-red-600 transition-all hover:bg-red-600 hover:text-white hover:shadow-md hover:shadow-red-600/20 active:bg-red-700 active:text-white active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                            type="button" data-dialog-close="true">
+                                            Cancel
+                                        </button>
+
+                                        <button
+                                            class="w-full mx-auto select-none rounded bg-slate-800 py-2 px-4 text-center text-sm font-semibold text-white shadow-md shadow-slate-900/10 transition-all hover:shadow-lg hover:shadow-slate-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                            type="submit">
+                                            Save
+                                        </button>
+                                    </div>
+                                    <p class="flex justify-center mt-4 font-sans text-sm text-slate-500">
+                                        Looking for more details? Contact
+                                        <a href="#admin" class="ml-1 text-sm font-bold leading-normal text-slate-500">
+                                            Admin.
+                                        </a>
+                                    </p>
+                                </div>
+                                </form>
+
+                            </div>
+                        </div>
                     @endforeach
 
-                    {{-- <div data-dialog-backdrop=""
-                        class="fixed left-0 top-0 inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">
-                        <div data-dialog=""
-                            class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-slate-700 shadow-md">
-                            <div class="flex flex-col p-6">
-                                <h4 class="text-2xl mb-1 font-semibold text-slate-700">
-                                    Edit FAQ Information
-                                </h4>
-                                <p class="mb-3 mt-1 text-slate-400">
-                                    Edit your information
-                                </p>
-
-                                <form action="/dashboard/faq" method="POST">
-                                    @method('PUT')
-                                    @csrf
-                                    <div class="w-full max-w-sm min-w-[200px] mt-4">
-                                        <label class="block mb-1 text-sm text-slate-700">
-                                            Question
-                                        </label>
-                                        <input type="text" name="question" required value=""
-                                            class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
-                                            placeholder="Enter your text" />
-                                        @error('question')
-                                            <p class="text-red-500 text-xs mt-1">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-                                    <div class="w-full max-w-sm min-w-[200px] mt-4">
-                                        <label class="block mb-1 text-sm text-slate-700">
-                                            Answer
-                                        </label>
-                                        <input type="text" name="answer" required value=""
-                                            class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
-                                            placeholder="Enter the email" />
-                                        @error('answer')
-                                            <p class="text-red-500 text-xs mt-1">
-                                                {{ $message }}
-                                            </p>
-                                        @enderror
-                                    </div>
-
-                            </div>
-                            <div class="p-6 pt-0">
-                                <div class="flex space-x-2">
-                                    <button
-                                        class="w-full mx-auto select-none rounded border border-red-600 py-2 px-4 text-center text-sm font-semibold text-red-600 transition-all hover:bg-red-600 hover:text-white hover:shadow-md hover:shadow-red-600/20 active:bg-red-700 active:text-white active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                        type="button" data-dialog-close="true">
-                                        Cancel
-                                    </button>
-
-                                    <button
-                                        class="w-full mx-auto select-none rounded bg-slate-800 py-2 px-4 text-center text-sm font-semibold text-white shadow-md shadow-slate-900/10 transition-all hover:shadow-lg hover:shadow-slate-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                        type="submit">
-                                        Save
-                                    </button>
-                                </div>
-                                <p class="flex justify-center mt-4 font-sans text-sm text-slate-500">
-                                    Looking for more details? Contact
-                                    <a href="#admin" class="ml-1 text-sm font-bold leading-normal text-slate-500">
-                                        Admin.
-                                    </a>
-                                </p>
-                            </div>
-                            </form>
-
-                        </div>
-                    </div> --}}
 
                 </tbody>
             </table>
@@ -193,6 +194,8 @@
             </div>
         </div>
     </div>
+
+
 
 
     {{-- TAMBAH DATA --}}

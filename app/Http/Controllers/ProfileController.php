@@ -40,17 +40,25 @@ class ProfileController extends Controller
 
     public function edit() {}
 
-    public function update(UpdateProfileRequest $request, $id)
+    public function update(UpdateProfileRequest $request, Profile $profile)
     {
         $data = $request->validated();
 
-        $profile = Profile::where($id, 'id')->first();
+        // $profile = Profile::find($id);
+        $profile->id;
 
-        $year = Carbon::now()->format('Y');
-        $file = $request->file('image');
-        $data['image'] = $file ? $file->storeAs("image-profile/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
+        if ($data->hasFile('image')) {
+            if ($data->oldImage) {
+                Storage::disk('public')->delete($data->oldImage);
+            }
+            $year = Carbon::now()->format('Y');
+            $file = $request->file('image');
+            $data['image'] = $file ? $file->storeAs("image-profile/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
+        }
 
-        $data->save();
+        $profile->update($data);
+
+        toast('Profile Edited', 'success');
 
         return redirect()->back();
     }

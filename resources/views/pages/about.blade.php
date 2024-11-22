@@ -38,7 +38,6 @@
                 <!-- Accordion Item 1 -->
                 @foreach ($structure as $data)
                     <div class="border-b border-slate-200">
-
                         <button onclick="toggleAccordion({{ $data->id }})"
                             class="w-full flex justify-between items-center py-5 text-slate-800">
                             <span>{{ $data->title }}</span>
@@ -216,5 +215,6 @@
         </div>
     </div>
 
-    <script></script>
+
+    {{-- <script></script> --}}
 @endsection
