@@ -45,6 +45,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/blog', function () {
+
     $posts = Post::get();
     return view('pages.blog', compact('posts'));
 });
@@ -57,18 +58,29 @@ Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact-send', [ContactController::class, 'store']);
 Route::get('/posts/{post:slug}', [PostsController::class, 'show']);
 
-Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
 
 Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+});
+
+Route::middleware('auth', 'verified', 'postsAdmin')->group(function () {
+    Route::resource('/dashboard/posts', PostsController::class);
     Route::resource('/dashboard/hero', HeroController::class);
-    Route::resource('/dashboard/faq', FaqController::class);
     Route::resource('/dashboard/profile', ProfileController::class);
     Route::resource('/dashboard/visimisi', VisiMisiController::class);
+});
+
+Route::middleware('auth', 'verified', 'socialAdmin')->group(function () {
+    Route::resource('/dashboard/faq', FaqController::class);
     Route::resource('/dashboard/testimonal', TestimonalController::class);
     Route::resource('/dashboard/structure', StructureController::class);
-    Route::resource('/dashboard/posts', PostsController::class);
 });
+
+
+
+
+
 
 
 

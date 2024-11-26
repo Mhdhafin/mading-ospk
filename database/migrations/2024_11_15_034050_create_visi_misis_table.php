@@ -15,6 +15,7 @@
                 $table->uuid('id')->primary();
                 $table->string('title');
                 $table->text('subtitle');
+                $table->string('icon')->nullable();
                 $table->softDeletes();
                 $table->timestamps();
             });

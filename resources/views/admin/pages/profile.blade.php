@@ -128,10 +128,11 @@
 
                             <th class="border-b border-blue-gray-50 py-3 px-5 text-left">
                                 <p
-                                    class="flex items-center justify-between gap-2 antialiased font-sans text-[11px] font-bold uppercase text-blue-gray-400">
+                                    class="grid grid-cols-2  gap-2 antialiased font-sans text-[11px] font-bold uppercase text-blue-gray-400">
                                     Action
                                 </p>
                             </th>
+
 
                         </tr>
                     </thead>
@@ -157,29 +158,29 @@
                                         {{ $data->description }}
                                     </p>
                                 </td>
-                                <td class="flex mt-20 px-5 mr-5 items-center ">
-                                    <button data-dialog-target="{{ $data->id }}"
-                                        class="rounded-md  bg-slate-800 inline-flex items-center gap-x-2 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
-                                        type="button">
-                                        Edit
-                                    </button>
-
-
-
-                                    <form id="confirm" action="/dashboard/profile/{{ $data->id }}" method="post">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2"
-                                            id="delete">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 " fill="red"
-                                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                <path
-                                                    d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
-                                            </svg>
+                                <td class="py-3  px-5 border-b border-blue-gray-50">
+                                    <div class="flex items-center">
+                                        <button data-dialog-target="{{ $data->id }}"
+                                            class="rounded-md  bg-slate-800 inline-flex items-center gap-x-2 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                                            type="button">
+                                            Edit
                                         </button>
-                                    </form>
-
+                                        <form id="confirm" action="/dashboard/profile/{{ $data->id }}" method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2"
+                                                id="delete">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 " fill="red"
+                                                    viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                    <path
+                                                        d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
+
+
                             </tr>
 
                             <div data-dialog-backdrop="{{ $data->id }}" data-dialog-backdrop-close="true"

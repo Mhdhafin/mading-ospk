@@ -19,14 +19,15 @@ class HeroController extends Controller
 
     public function store(StoreHeroRequest $request, Hero $hero)
     {
+        $hero = Hero::first();
 
         $data = $request->validated();
 
         $year = Carbon::now()->format('Y');
-        $file = $request->file('image');
-        $data['image'] = $file ? $file->storeAs("image-hero/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
+        $file = $request->file(key: 'hero_image');
+        $data['hero_image'] = $file?->storeAs("hero_image/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public');
 
-        $hero->update($data);
+        Hero::where('id', $hero->id)->update($data);
 
         toast('Hero Edited', 'success');
 

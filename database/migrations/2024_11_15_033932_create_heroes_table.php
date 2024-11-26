@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('title');
             $table->text('subtitle')->nullable();
+            $table->string('hero_image')->nullable();
             $table->timestamps();
         });
     }

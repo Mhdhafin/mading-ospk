@@ -21,7 +21,9 @@
 
     <link rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/material.css') }}"> --}}
+    <link rel="stylesheet" href="./assets/css/style.css">
+    {{-- Icons --}}
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <style>
         /* .custom-bg {
             width: 100%;
@@ -43,12 +45,7 @@
             z-index: 1;
         }
 
-        /* .hero-bg {
-            height: 100vh;
-            background-color: black 60%;
-            position: absolute;
-            z-index: 100;
-        } */
+
 
         .hero-bg {
             content: "";
@@ -82,6 +79,7 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/user.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+
 
 
 </body>

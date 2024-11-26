@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="lg:w-4/6 self-end mt-12 w-full">
-                    <h2 class="">{{ $profile->heading }}</h2>
+                    <h2 class="text-2xl font-bold mb-2">{{ $profile->heading }}</h2>
                     <p class="text-base lg:text-base mb-32 w-full max-w-3xl">
                         {{ Str::limit($profile->description, 200) }}
                     </p>

@@ -97,11 +97,11 @@
                 <x-nav-link2 href="/about" :activ="request()->is('about')">About</x-nav-link2>
                 <x-nav-link2 href="/blog" :activ="request()->is('blog')">Blog</x-nav-link2>
 
-                <div class="z-10 text-white block px-4">
+                {{-- <div class="z-10 text-white block px-4">
                     <a href="/login" class="text-base mr-2 hover:scale-105 transition duration-300">Login</a>
                     <span class="cursor-pointer">|</span>
                     <a href="/register" class="text-base ml-2 hover:scale-105 transition duration-300">Register</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </nav>

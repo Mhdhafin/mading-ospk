@@ -25,3 +25,12 @@
     opacity: 0.4;
     z-index: -1;
 }
+
+header.tes {
+    padding: 5px 100px;
+    background-color: #b71c1c99;
+}
+
+header {
+    position: fixed;
+}

@@ -19,7 +19,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -27,9 +27,11 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
             return redirect('/dashboard');
-        } else {
-            return back()->with('error', 'Username or Password Invalid');
         }
+
+        // toast('Login Failed', 'error');
+
+        return redirect()->back();
     }
     public function register()
     {
