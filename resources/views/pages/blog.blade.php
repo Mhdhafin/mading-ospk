@@ -10,7 +10,7 @@
     <x-header>
         Blog
     </x-header>
-    <section class="pt-24 pb-32 rounded-b-md bg-slate-200">
+    <section class="pt-24 pb-32 rounded-b-md">
 
         <div class="w-full px-4 flex justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @forelse ($posts as $post)

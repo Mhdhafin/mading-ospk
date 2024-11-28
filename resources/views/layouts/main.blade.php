@@ -9,7 +9,9 @@
     <title> OSPK SMKN 65 | @yield('title')</title>
     {{-- Alpine js --}}
     <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     {{-- Font Awesome --}}
     <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 
@@ -21,7 +23,7 @@
 
     <link rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     {{-- Icons --}}
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <style>
@@ -34,6 +36,8 @@
             background-size: 30px 30px;
             background-position: -5px -5px;
         } */
+
+
 
         .hero {
             height: 100vh;

@@ -7,6 +7,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\TestimonalController;
 use App\Http\Controllers\VisiMisiController;
@@ -49,6 +50,8 @@ Route::get('/blog', function () {
     $posts = Post::get();
     return view('pages.blog', compact('posts'));
 });
+
+Route::get('/search', [SearchController::class, 'telusuri'])->name('search.result');
 
 
 // Route::get('/posts', [BlogController::class, 'index']);

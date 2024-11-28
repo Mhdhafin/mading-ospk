@@ -19,13 +19,23 @@
                     @csrf
                     <div class="flex w-full flex-col gap-4 p-4">
                         <div class="flex w-full flex-col  gap-4 ">
-                            <div class="w-full ">
-                                <label class="block mb-2 text-sm text-slate-600">
-                                    Name
-                                </label>
-                                <input type="text" name="name"
-                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                    placeholder="Name.." />
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="w-full ">
+                                    <label class="block mb-2 text-sm text-slate-600">
+                                        Name
+                                    </label>
+                                    <input type="text" name="name"
+                                        class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                        placeholder="Name.." />
+                                </div>
+                                <div class="w-full ">
+                                    <label class="block mb-2 text-sm text-slate-600">
+                                        Position
+                                    </label>
+                                    <input type="text" name="position"
+                                        class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                        placeholder="kosongkan jika tidak punya!" />
+                                </div>
                             </div>
                             <div class="w-full ">
                                 <div class="relative w-full min-w-[200px]">
@@ -40,7 +50,7 @@
                             </div>
 
                             <label class="block mt-4 text-sm">
-                                <span class="text-slate-600 ">Image</span>
+                                <span class="text-slate-600 ">Image (Boleh Kosong!)</span>
                                 <div class="flex items-center justify-center w-full">
                                     <label for="dropzone-file"
                                         class="flex flex-col relative py-4 items-center justify-center w-full rounded-lg  border-2 border-gray-300 border-dashed cursor-pointer bg-gray-50  dark:bg-gray-200 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -115,6 +125,11 @@
                             </th>
                             <th class="border-b border-blue-gray-50 py-3 px-5 text-left">
                                 <p class="block antialiased font-sans text-[11px] font-bold uppercase text-blue-gray-400">
+                                    Position
+                                </p>
+                            </th>
+                            <th class="border-b border-blue-gray-50 py-3 px-5 text-left">
+                                <p class="block antialiased font-sans text-[11px] font-bold uppercase text-blue-gray-400">
                                     Message
                                 </p>
                             </th>
@@ -138,6 +153,11 @@
                                 <td class="py-3  px-5 border-b border-blue-gray-50">
                                     <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
                                         {{ $data->name }}
+                                    </p>
+                                </td>
+                                <td class="py-3  px-5 border-b border-blue-gray-50">
+                                    <p class="block antialiased font-sans text-xs font-semibold text-blue-gray-600">
+                                        {{ $data->position }}
                                     </p>
                                 </td>
                                 <td class="py-3  px-5 border-b border-blue-gray-50">

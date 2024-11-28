@@ -38,9 +38,12 @@ class PostsController extends Controller
         return redirect()->back();
     }
 
-    public function show(Post $post)
+    public function show(Request $request, Post $post)
     {
-        return view('pages.details', compact('post'));
+
+        $recentPosts = Post::latest()->take(5)->get();
+        // $recentComments = Comment::latest()->take(5)->with('post')->get();
+        return view('pages.details', compact('post', 'recentPosts'));
     }
 
     public function edit() {}

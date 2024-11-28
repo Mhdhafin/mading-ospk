@@ -24,6 +24,7 @@ class StoreTestimonalRequest extends FormRequest
         return [
             'name' => 'required',
             'message' => 'required|min:4',
+            'position' => 'nullable|min:4',
             'image' => 'nullable|image|file'
         ];
     }
