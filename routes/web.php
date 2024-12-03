@@ -51,7 +51,8 @@ Route::get('/blog', function () {
     return view('pages.blog', compact('posts'));
 });
 
-Route::get('/search', [SearchController::class, 'telusuri'])->name('search.result');
+Route::get('/posts', [SearchController::class, 'index']);
+Route::get('/posts/search', [SearchController::class, 'telusuri'])->name('search.result');
 
 
 // Route::get('/posts', [BlogController::class, 'index']);
