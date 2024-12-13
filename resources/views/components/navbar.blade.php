@@ -5,7 +5,7 @@
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     <!-- Mobile menu button-->
                     <button type="button" @click="isOpen = !isOpen"
-                        class="relative inline-flex items-center justify-center rounded-md p-2 text-red-400 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-red-400 "
                         aria-controls="mobile-menu" aria-expanded="false">
                         <span class="absolute -inset-0.5"></span>
                         <span class="sr-only">Open main menu</span>
@@ -90,12 +90,12 @@
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div x-show="isOpen" class="sm:hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pb-3 pt-2">
+        <div x-show="isOpen" class="sm:hidden " id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2 transition duration-300">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <x-nav-link2 href="/" :activ="request()->is('/')">Home</x-nav-link2>
-                <x-nav-link2 href="/about" :activ="request()->is('about')">About</x-nav-link2>
-                <x-nav-link2 href="/blog" :activ="request()->is('blog')">Blog</x-nav-link2>
+                <x-nav-link2 href="/" :active="request()->is('/')">Home</x-nav-link2>
+                <x-nav-link2 href="/about" :active="request()->is('about')">About</x-nav-link2>
+                <x-nav-link2 href="/blog" :active="request()->is('blog')">Blog</x-nav-link2>
 
                 {{-- <div class="z-10 text-white block px-4">
                     <a href="/login" class="text-base mr-2 hover:scale-105 transition duration-300">Login</a>
@@ -106,20 +106,3 @@
         </div>
     </nav>
 </header>
-
-
-
-<script>
-    window.onscroll = function() {
-        const navbar = document.getElementById("navbar");
-        const fixedNav = navbar.offsetTop
-
-        if (window.pageYOffset > fixedNav) {
-            navbar.classList.add("navbar-fixed");
-            navbar.classList.remove("absolute")
-        } else {
-            navbar.classList.remove("navbar-fixed");
-            navbar.classList.add("absolute")
-        }
-    };
-</script>

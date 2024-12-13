@@ -19,7 +19,8 @@
     </div>
 
     <div class="p-4 w-full">
-        <section class="hero bg-center bg-no-repeat bg-gray-700 bg-blend-multiply">
+        <section style="background-image: url('./storage/{{ $hero->hero_image }}');"
+            class="hero bg-center bg-no-repeat bg-gray-700 bg-blend-multiply">
             <div class="hero-bg"></div>
             <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
                 <h1 class="mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">
@@ -59,7 +60,7 @@
                         Edit Hero Section
                     </h3>
                 </div>
-                <form class="w-full" action="/dashboard/hero" method="post">
+                <form class="w-full" action="/dashboard/hero" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="flex w-full flex-col gap-4 p-4">
                         <div class="flex w-full flex-col  gap-4 ">
@@ -87,7 +88,7 @@
 
                         </div>
 
-                        {{-- <div class="p-4 w-full">
+                        <div class="p-4 w-full">
                             <label class="block mt-4 text-sm">
                                 <span class="text-slate-600 ">Hero Image</span>
                                 <div class="flex items-center justify-center w-full">
@@ -115,7 +116,7 @@
                                 </div>
 
                             </label>
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="p-6 pt-0">
                         <button

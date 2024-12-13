@@ -6,23 +6,11 @@
 @section('body')
 
 
-    <section class="custom-bg -z-50 absolute inset-0">
-    </section>
-    {{-- <section class="pt-36 pb-32">
-        <div class="w-full px-4 py-6 sm:px-6 lg:px-8">
 
-            <img src="./assets/img/ospk_logo.png" class="mx-auto w-80 h-80" alt="">
-            <h2 class="text-4xl mb-12 font-serif font-bold text-center text-yellow-6    00">OSIS SMKN 65 JAKARTA</h2>
-
-
-        </div>
-    </section> --}}
-
-
-
-    <section class="hero bg-center bg-no-repeat bg-gray-700 bg-blend-multiply">
+    <section style="background-image: url('./storage/{{ $hero->hero_image }}');"
+        class=" bg-center bg-cover relative  min-h-screen bg-fixed bg-no-repeat bg-gray-700 bg-blend-multiply">
         <div class="hero-bg"></div>
-        <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+        <div class="px-4 mx-auto max-w-screen-xl text-center py-32 lg:py-56">
             <h1 class="mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">
                 {{ $hero->title }}</h1>
             <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">{{ $hero->subtitle }}</p>

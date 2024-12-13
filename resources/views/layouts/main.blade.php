@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="./assets/img/ospk_logo.png" />
     <title> OSPK SMKN 65 | @yield('title')</title>
+
+    {{-- Aos Animation --}}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     {{-- Alpine js --}}
     <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
 
@@ -23,7 +28,7 @@
 
     <link rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     {{-- Icons --}}
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <style>
@@ -72,6 +77,9 @@
 
     @yield('body')
 
+
+    <x-footer></x-footer>
+
     {{-- <x-footer></x-footer> --}}
     {{-- <div class="w-full py-4 bg-red-600">
         <p class="text-center text-white mb-3">Created by Muhammad Dhafin Haron</p>
@@ -84,7 +92,9 @@
     <script src="{{ asset('assets/js/user.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
-
+    <script>
+        AOS.init();
+    </script>
 
 </body>
 

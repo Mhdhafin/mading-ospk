@@ -12,7 +12,7 @@
     </x-header>
     <section class="pt-24 pb-32 rounded-b-md">
 
-        <div class="w-full px-4 flex justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="w-full px-4  grid  grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @forelse ($posts as $post)
                 <div class="shadow-lg hover:scale-105 bg-white  transition duration-300 rounded-md max-w-sm mx-auto">
                     <img src="/storage/{{ $post->image }}" role="presentation"

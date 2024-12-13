@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
 
 class AuthController extends Controller
 {
@@ -17,6 +20,7 @@ class AuthController extends Controller
 
     public function loginPost(Request $request)
     {
+
         $credentials = $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -26,6 +30,11 @@ class AuthController extends Controller
 
 
             $request->session()->regenerate();
+
+            // Alert()->success('SuccessAlert', 'Selamat Datang ' . $user->auth()->name);
+            // Alert::success('Selamat Datang', $user);
+
+
             return redirect('/dashboard');
         }
 

@@ -28,7 +28,8 @@ class StoreHeroRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'subtitle' => 'required'
+            'subtitle' => 'required',
+            'hero_image' => 'nullable|file|image'
         ];
     }
 }

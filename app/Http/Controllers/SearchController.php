@@ -8,23 +8,24 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
 
+
     public function index()
     {
-        $posts = Post::paginate(3);
+        // $posts = Post::paginate(3);
 
-        return view('pages.search', compact('posts'));
+        // return view('pages.search', compact('posts'));
     }
-    public function telusuri(Request $request)
+    public function telusuri(Request $request, Post $post)
     {
-        $cari = $request->cari;
-        $posts = Post::where('title', 'like', "%" . $cari . "%")
-            ->orWhere('content', 'like',  "%" . $cari . "%")
-            ->paginate();
+        $cari = $request->input('cari');
+        $post = Post::where('title', 'LIKE', "%$cari%")
+            ->orWhere('content', 'LIKE',  "%$cari%")
+            ->get();
 
         // $post = Post::where()->first();
 
         $recentPosts = Post::latest()->take(5)->get();
 
-        return view('pages.search', compact('posts', 'cari', 'recentPosts'));
+        return view('pages.search', compact('post', 'recentPosts'));
     }
 }

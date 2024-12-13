@@ -19,6 +19,9 @@ class HeroController extends Controller
 
     public function store(StoreHeroRequest $request, Hero $hero)
     {
+
+        // dd($request);
+
         $hero = Hero::first();
 
         $data = $request->validated();
@@ -38,17 +41,19 @@ class HeroController extends Controller
 
     public function update(UpdateHeroRequest $request)
     {
-        $data = $request->validated();
 
-        $year = Carbon::now()->format('Y');
-        $file = $request->file('image');
-        $data['image'] = $file ? $file->storeAs("image-Hero/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
 
-        $data->save();
+        // $data = $request->validated();
 
-        toast('Hero Edited', 'success');
+        // $year = Carbon::now()->format('Y');
+        // $file = $request->file('image');
+        // $data['image'] = $file ? $file->storeAs("image-Hero/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
 
-        return redirect()->back();
+        // $data->save();
+
+        // toast('Hero Edited', 'success');
+
+        // return redirect()->back();
     }
 
     public function destroy(string $id)

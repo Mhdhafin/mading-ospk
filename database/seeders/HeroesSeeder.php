@@ -14,6 +14,7 @@ class HeroesSeeder extends Seeder
     public function run(): void
     {
         Hero::create([
+
             'title' => 'Osis Smkn 65 Jakarta',
             'subtitle' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam vero ea neque in ducimus saepe harum veritatis illum nihil vitae.'
         ]);

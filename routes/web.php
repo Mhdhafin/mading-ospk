@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChangeRoleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HeroController;
@@ -79,6 +80,10 @@ Route::middleware('auth', 'verified', 'socialAdmin')->group(function () {
     Route::resource('/dashboard/faq', FaqController::class);
     Route::resource('/dashboard/testimonal', TestimonalController::class);
     Route::resource('/dashboard/structure', StructureController::class);
+});
+
+Route::middleware(['auth', 'verified', 'superAdmin'])->group(function () {
+    Route::resource('/dashboard/changerole', ChangeRoleController::class);
 });
 
 
