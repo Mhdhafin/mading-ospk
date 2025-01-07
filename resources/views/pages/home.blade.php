@@ -10,7 +10,7 @@
         class=" bg-center bg-cover relative  min-h-screen bg-fixed bg-no-repeat bg-gray-700 bg-blend-multiply">
         <div class="hero-bg"></div>
         <div class="px-4 mx-auto max-w-screen-xl text-center py-32 lg:py-56">
-            <h1 class="mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">
+            <h1 class="judul mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">
                 {{ $hero->title }}</h1>
             <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">{{ $hero->subtitle }}</p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">

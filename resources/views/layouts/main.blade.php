@@ -65,14 +65,9 @@
             opacity: 0.4;
             z-index: -1;
         }
-
-        .judul {
-            color: #03ff42;
-            font-size: 5rem;
-        }
     </style>
 
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('build/assets/build.css') }}">
 </head>
 
 <body class="bg-white">
@@ -95,6 +90,7 @@
 
     {{-- @stack('accordion') --}}
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('build/assets/build.js') }}"></script>
 
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
