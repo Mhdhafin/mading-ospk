@@ -65,6 +65,11 @@
             opacity: 0.4;
             z-index: -1;
         }
+
+        .judul {
+            color: #03ff42;
+            font-size: 5rem;
+        }
     </style>
 
     @vite('resources/css/app.css')
@@ -90,7 +95,7 @@
 
     {{-- @stack('accordion') --}}
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <script src="{{ asset('assets/js/user.js') }}"></script>
+
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <script>

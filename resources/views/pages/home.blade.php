@@ -108,8 +108,8 @@
         <div class="flex justify-center items-start my-2">
             <div class="w-full sm:w-10/12 md:w-1/2 my-1">
                 <h2 class="text-xl font-semibold text-vnet-blue mb-2">FAQ - Tanya-tanya seputar sekolah YUK!</h2>
-                <!-- Accordion Item 1 -->
-                {{-- @foreach ($faq as $data)
+
+                @foreach ($faq as $data)
                     <div class="border-b border-slate-200">
                         <button onclick="toggleAccordion({{ $data->id }})"
                             class="w-full flex justify-between items-center py-5 text-slate-800">
@@ -117,12 +117,12 @@
                             <span id="icon-{{ $data->id }}" class="text-slate-800 transition-transform duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                                     class="w-4 h-4">
-                                    <path
-                                        d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                                    <path fill-rule="evenodd"
+                                        d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </span>
                         </button>
-
                         <div id="content-{{ $data->id }}"
                             class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
                             <div class="pb-5 text-sm text-slate-500">
@@ -130,8 +130,8 @@
                             </div>
                         </div>
                     </div>
-                @endforeach --}}
-                @foreach ($faq as $data)
+                @endforeach
+                {{-- @foreach ($faq as $data)
                     <div class="border-b border-slate-200">
                         <button onclick="toggleAccordion({{ $data->id }})"
                             class="w-full flex justify-between items-center py-5 text-slate-800">
@@ -162,7 +162,7 @@
 
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
 
 
 
@@ -224,6 +224,38 @@
 
 
     </section>
+
+    @push('accordion')
+        <script>
+            function toggleAccordion(index) {
+                const content = document.getElementById(`content-${index}`);
+                const icon = document.getElementById(`icon-${index}`);
+
+                // SVG for Down icon
+                const downSVG = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+              <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          `;
+
+                // SVG for Up icon
+                const upSVG = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+              <path fill-rule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
+            </svg>
+          `;
+
+                // Toggle the content's max-height for smooth opening and closing
+                if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                    content.style.maxHeight = '0';
+                    icon.innerHTML = upSVG;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.innerHTML = downSVG;
+                }
+            }
+        </script>
+    @endpush
 
 
 @endsection
