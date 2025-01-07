@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     {{-- Icons --}}
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <link rel="stylesheet" href="{{ asset('build/assets/build.css') }}">
     <style>
         /* .custom-bg {
             width: 100%;
@@ -67,7 +69,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="{{ asset('build/assets/build.css') }}">
+
 </head>
 
 <body class="bg-white">
@@ -90,7 +92,7 @@
 
     {{-- @stack('accordion') --}}
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <script src="{{ asset('build/assets/build.js') }}"></script>
+    <script src="{{ asset('build/js/custom.js') }}"></script>
 
     <script src="{{ asset('assets/js/script.js') }}"></script>
 

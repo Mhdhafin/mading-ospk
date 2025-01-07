@@ -22,7 +22,7 @@
 
     @stack('style')
 
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('build/assets/build.css') }}">
 </head>
 
 <body>
@@ -43,6 +43,7 @@
     @include('sweetalert::alert')
 
 
+    <script src="{{ asset('build/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     @stack('script')
