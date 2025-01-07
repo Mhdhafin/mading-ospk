@@ -32,14 +32,11 @@
         <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" class="text-center mx-auto">
             <h2 class="text-2xl font-bold text-red-500 mb-2 ">SUSUNAN PENGURUS OSIS SMKN 65 <span class="block"> MASA BAKTI
                     2024-2025</span></h2>
-            {{-- <p class="text-sm md:w-1/2 text-slate-500 w-full mx-auto">
-                Explore our services and see how we can help you achieve your goals. Feel free to browse through, and
-                don't hesitate to reach out for any questions or personalized solutions tailored to your needs!
-            </p> --}}
+
         </div>
         <div class="w-full mt-8 px-4">
             <div class="max-w-2xl mx-auto py-5 px-6">
-                <!-- Accordion Item 1 -->
+
                 @foreach ($structure as $data)
                     <div class="border-b border-slate-200">
                         <button onclick="toggleAccordion({{ $data->id }})"

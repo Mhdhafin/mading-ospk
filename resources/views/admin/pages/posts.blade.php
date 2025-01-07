@@ -8,7 +8,7 @@
         <div data-dialog="sign-in-modal" data-dialog-mount="opacity-100 translate-y-0 scale-100"
             data-dialog-unmount="opacity-0 -translate-y-28 scale-90 pointer-events-none"
             data-dialog-transition="transition-all duration-300"
-            class="relative mx-auto w-2/5 rounded-lg overflow-hidden shadow-sm">
+            class="relative mx-auto  md:w-2/5 w-4/5 rounded-lg overflow-hidden shadow-sm">
             <div class="relative flex flex-col bg-white">
                 <div class="relative m-2.5 items-center flex justify-center text-white h-24 rounded-md bg-slate-800">
                     <h3 class="text-2xl">

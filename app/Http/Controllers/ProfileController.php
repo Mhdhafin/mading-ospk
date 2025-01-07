@@ -13,7 +13,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $profile = Profile::first();
+        $profile = Profile::get();
 
         return view('admin.pages.profile', compact('profile'));
     }

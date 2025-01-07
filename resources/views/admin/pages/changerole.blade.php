@@ -1,12 +1,12 @@
 @extends('admin._layouts.main')
-@section('title', 'Settings')
+@section('title', 'Change Role')
 
 
 
 @section('body')
     <div
-        class="relative mt-0 md:mt-10 flex flex-col w-full h-full text-slate-700 bg-white shadow-md rounded-xl bg-clip-border">
-        <div class="relative mx-4 mt-4 overflow-hidden text-slate-700 bg-white rounded-none bg-clip-border">
+        class="relative mt-0 md:mt-10 flex flex-col overflow-x-scroll w-full h-full text-slate-700 bg-white shadow-md rounded-xl bg-clip-border">
+        <div class="relative mx-4 mt-4 overflow-hidden  text-slate-700 bg-white rounded-none bg-clip-border">
             <div class="flex items-center justify-between ">
                 <div>
                     <h3 class="text-lg font-semibold text-slate-800">Admin List</h3>
@@ -29,14 +29,14 @@
 
         </div>
         <div class="p-0 ">
-            <table class="w-full mt-4 text-left table-auto min-w-max">
+            <table class="w-full mt-4 overflow-scroll text-left table-auto min-w-max">
                 <thead>
                     <tr>
                         <th
                             class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100">
                             <p
                                 class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-slate-500">
-                                Name
+                                Admin
                             </p>
                         </th>
                         <th
@@ -88,7 +88,7 @@
                                         type="button">
                                         Edit
                                     </button>
-                                    <form id="confirm" action="/dashboard/changerole{{ $item->id }}" method="post">
+                                    <form id="confirm" action="/dashboard/changerole/{{ $item->id }}" method="post">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2"
@@ -118,7 +118,7 @@
                                         Add information here
                                     </p>
 
-                                    <form action="/dashboard/settings/{{ $item->id }}" method="POST">
+                                    <form action="/dashboard/changerole/{{ $item->id }}" method="POST">
                                         @method('PUT')
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $item->id }}">
@@ -143,7 +143,7 @@
                                                         {{ $item->role }}</option>
                                                     <option value="superAdmin">superAdmin</option>
                                                     <option value="socialAdmin">socialAdmin</option>
-                                                    <option value="projectAdmin">projectAdmin</option>
+                                                    <option value="postsAdmin">postsAdmin</option>
                                                 </select>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.2" stroke="currentColor"
@@ -191,7 +191,7 @@
                 <p class="mb-3 mt-1 text-slate-400">
                     Add your information
                 </p>
-                <form action="/dashboard/settings" method="POST">
+                <form action="/dashboard/changerole" method="POST">
                     @csrf
                     <div class="w-full max-w-sm min-w-[200px] mt-4">
                         <label class="block mb-1 text-sm text-slate-700">
@@ -240,7 +240,7 @@
                             <select name="role"
                                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
                                 <option value="socialAdmin">socialAdmin</option>
-                                <option value="projectAdmin">projectAdmin</option>
+                                <option value="postsAdmin">postsAdmin</option>
                                 <option value="superAdmin">superAdmin</option>
                             </select>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

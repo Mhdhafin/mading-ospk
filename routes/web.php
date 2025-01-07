@@ -20,6 +20,8 @@ use App\Models\Profile;
 use App\Models\Structure;
 use App\Models\Testimonal;
 use App\Models\VisiMisi;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -34,8 +36,13 @@ Route::get('/', function () {
     $profile = Profile::first();
     $visimisi = VisiMisi::get();
     $faq = Faq::get();
+    $post = Post::paginate(3);
 
-    return view('pages.home', compact('hero', 'profile', 'visimisi', 'faq'));
+    return view('pages.home', compact('hero', 'profile', 'visimisi', 'faq', 'post'));
+});
+
+Route::get("/zafarganteng", function () {
+    Artisan::call("storage:link");
 });
 
 
@@ -66,6 +73,7 @@ Route::get('/posts/{post:slug}', [PostsController::class, 'show']);
 
 
 Route::middleware('auth', 'verified')->group(function () {
+    // Auth::routes();
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 });
 
@@ -111,7 +119,7 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('registerPost');
-Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('/logout/{id}', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 
 

@@ -69,10 +69,11 @@ class AuthController extends Controller
 
         return redirect()->back()->with('success', 'Create Register Succesfully');
     }
-    public function logout(Request $request)
+    public function logout(Request $request, $id)
     {
 
-        Auth::guard('web')->logout();
+        $user = User::findOrFail($id);
+        Auth::logout($user);
 
         $request->session()->invalidate();
 

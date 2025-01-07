@@ -33,6 +33,7 @@ class StructureController extends Controller
         foreach ($request->employees as $employee) {
             $data->employees()->create($employee);
         }
+
         toast('Structure Added', 'success');
 
         return redirect()->back();

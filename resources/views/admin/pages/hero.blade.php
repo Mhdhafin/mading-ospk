@@ -19,8 +19,8 @@
     </div>
 
     <div class="p-4 w-full">
-        <section style="background-image: url('./storage/{{ $hero->hero_image }}');"
-            class="hero bg-center bg-no-repeat bg-gray-700 bg-blend-multiply">
+        <section style="background-image: url('/storage/{{ $hero->hero_image }}');"
+            class="hero bg-center bg-cover bg-no-repeat bg-gray-700 bg-blend-multiply">
             <div class="hero-bg"></div>
             <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
                 <h1 class="mb-4 text-4xl font-serif font-bold leading-none text-yellow-400 md:text-5xl lg:text-7xl">
@@ -53,7 +53,7 @@
         <div data-dialog="hero-section-modal" data-dialog-mount="opacity-100 translate-y-0 scale-100"
             data-dialog-unmount="opacity-0 -translate-y-28 scale-90 pointer-events-none"
             data-dialog-transition="transition-all duration-300"
-            class="relative mx-auto w-full max-w-screen-sm rounded-lg overflow-hidden shadow-sm">
+            class="relative mx-auto h-screen md:w-2/5 w-4/5 rounded-lg overflow-scroll shadow-sm">
             <div class="relative flex flex-col bg-white">
                 <div class="relative m-2.5 items-center flex justify-center text-white h-24 rounded-md bg-slate-800">
                     <h3 class="text-2xl text-white">
@@ -111,7 +111,7 @@
                                         </div>
                                         <input id="dropzone-file" name="hero_image" onchange="previewImage()"
                                             id="image imgInp" value="{{ old('hero_image') }}" type="file"
-                                            class="hidden image " />
+                                            class="hidden image h-20" />
                                     </label>
                                 </div>
 

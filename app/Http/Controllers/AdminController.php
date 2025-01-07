@@ -16,7 +16,7 @@ class AdminController extends Controller
         $post = Post::all()->count();
 
         $users = User::all()->count();
-        $user = User::latest()->get();
+        $user = User::OrderBy('last_seen', 'desc')->get();
 
         return view('admin.pages.dashboard', compact('post', 'user', 'users'));
     }
