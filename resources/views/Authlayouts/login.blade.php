@@ -8,7 +8,8 @@
     <link rel="shortcut icon" href="./assets/img/ospk_logo.png" />
     <title>OSPK SMKN 65 | {{ $title }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    @vite('resources/css/app.css')
+
+    <link rel="stylesheet" href="{{ asset('build/assets/build.css') }}">
 </head>
 
 <body class="overflow-hidden">
@@ -67,6 +68,7 @@
     </div>
 
     <script src="./assets/js/script.js"></script>
+    <script src="{{ asset('build/assets/build.js') }}"></script>
 </body>
 
 </html>
