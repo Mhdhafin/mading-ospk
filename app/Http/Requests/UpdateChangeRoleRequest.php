@@ -5,14 +5,14 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class UpdateProfileRequest extends FormRequest
+class UpdateChangeRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        if (!Gate::any(['postsAdmin', 'superAdmin'])) {
+        if (!Gate::allows('superAdmin')) {
             return false;
         } else {
             return true;
@@ -27,9 +27,7 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'heading' => 'required|min:4',
-            'description' => 'required',
-            'image' => 'required|image|file'
+            'role' => 'required',
         ];
     }
 }

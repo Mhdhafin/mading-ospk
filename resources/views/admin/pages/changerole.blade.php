@@ -126,10 +126,10 @@
                                             <label class="block mb-1 text-sm text-slate-700">
                                                 Admin
                                             </label>
-                                            <input type="text" name="email" disabled value="{{ $item->email }}"
+                                            <input type="text" name="name" disabled value="{{ $item->name }}"
                                                 class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
-                                                placeholder="{{ $item->email }}" />
-                                            @error('Admin')
+                                                placeholder="{{ $item->name }}" />
+                                            @error('name')
                                                 <p class="text-red-500 text-xs mt-1">
                                                     {{ $message }}
                                                 </p>
@@ -141,9 +141,15 @@
                                                     class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
                                                     <option disabled selected value="{{ $item->role }}" selected>
                                                         {{ $item->role }}</option>
-                                                    <option value="superAdmin">superAdmin</option>
-                                                    <option value="socialAdmin">socialAdmin</option>
-                                                    <option value="postsAdmin">postsAdmin</option>
+                                                    @if ($item->role != 'superAdmin')
+                                                        <option value="superAdmin">superAdmin</option>
+                                                    @endif
+                                                    @if ($item->role != 'socialAdmin')
+                                                        <option value="socialAdmin">socialAdmin</option>
+                                                    @endif
+                                                    @if ($item->role != 'postsAdmin')
+                                                        <option value="postsAdmin">postsAdmin</option>
+                                                    @endif
                                                 </select>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.2" stroke="currentColor"
@@ -305,7 +311,7 @@
         </script>
     @endpush
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
     <script>
         document.getElementById('delete').addEventListener('click', function(e) {
             e.preventDefault();

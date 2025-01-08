@@ -137,6 +137,9 @@
         <script src="{{ asset('assets/js/modal.js') }}"></script>
     @endpush
 
+
+    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
+
     @push('custom_script')
         <script>
             function previewImage() {

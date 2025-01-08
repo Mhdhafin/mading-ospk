@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="{{ asset('build/assets/build.css') }}">
 </head>
 
-<body class="overflow-hidden">
-    <div class="h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+<body class="bg-gray-100  overflow-hidden relative">
+    <div class="absolute z-20 mt-8 w-full text-black">
+        <img src="{{ asset('assets/img/ospk_logo.PNG') }}" class="w-40 h-40 mx-auto" alt="">
+    </div>
+    <div class="absolute mt-20 h-screen w-screen py-6 flex flex-col justify-center sm:py-12">
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
             <div
                 class="absolute inset-0 bg-gradient-to-r from-red-300 to-red-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">

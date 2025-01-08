@@ -32,9 +32,9 @@ class FaqController extends Controller
     {
         $data = $request->validated();
 
-        $data = Faq::where($id, 'id')->first();
+        Faq::where('id', $id)->update($data);
 
-        $data->save();
+        toast('FAQ Updated', 'success');
 
         return redirect()->back();
     }

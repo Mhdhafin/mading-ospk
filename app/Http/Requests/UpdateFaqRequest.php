@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateFaqRequest extends FormRequest
 {
@@ -11,7 +12,12 @@ class UpdateFaqRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        if (!Gate::any(['postsAdmin', 'superAdmin'])) {
+            return false;
+        } else {
+
+            return true;
+        }
     }
 
     /**
@@ -22,7 +28,8 @@ class UpdateFaqRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'question' => 'required',
+            'answer' => 'required|min:5'
         ];
     }
 }

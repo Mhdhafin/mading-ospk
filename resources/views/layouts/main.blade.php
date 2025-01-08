@@ -90,10 +90,9 @@
     </div> --}}
 
 
-    {{-- @stack('accordion') --}}
+    @stack('accordion')
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('build/js/custom.js') }}"></script>
-
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <script>

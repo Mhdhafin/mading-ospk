@@ -24,7 +24,7 @@ class ProfileController extends Controller
     }
 
 
-    public function store(StoreProfileRequest $request)
+    public function store(UpdateProfileRequest $request)
     {
         $data = $request->validated();
 
@@ -43,21 +43,22 @@ class ProfileController extends Controller
 
     public function update(UpdateProfileRequest $request, Profile $profile)
     {
+
+        $profile = Profile::first();
+
         $data = $request->validated();
 
-        // $profile = Profile::find($id);
-        $profile->id;
 
-        if ($data->hasFile('image')) {
-            if ($data->oldImage) {
-                Storage::disk('public')->delete($data->oldImage);
-            }
-            $year = Carbon::now()->format('Y');
-            $file = $request->file('image');
-            $data['image'] = $file ? $file->storeAs("image-profile/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public') : null;
-        }
 
-        $profile->update($data);
+        $year = Carbon::now()->format('Y');
+        $file = $request->file(key: 'image');
+        $data['image'] = $file?->storeAs("image/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public');
+
+        // $year = Carbon::now()->format('Y');
+        // $file = $request->file(key: 'hero_image');
+        // $data['hero_image'] = $file?->storeAs("hero_image/$year", uniqid() . '.' . $file->getClientOriginalExtension(), 'public');
+
+        Profile::where('id', $profile->id)->update($data);
 
         toast('Profile Edited', 'success');
 

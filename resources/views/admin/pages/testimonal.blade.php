@@ -167,7 +167,8 @@
                                 </td>
 
                                 <td class="py-3  px-5 border-b border-blue-gray-50">
-                                    <form id="confirm" action=" " method="post">
+                                    <form id="confirm" action="/dashboard/testimonal/{{ $data->id }}"
+                                        method="post">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" id="delete">
@@ -215,7 +216,7 @@
             }
         </script>
     @endpush
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
     <script>
         document.getElementById('delete').addEventListener('click', function(e) {
             e.preventDefault();

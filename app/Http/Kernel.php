@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'postsAdmin' => \App\Http\Middleware\postsAdmin::class,
         'socialAdmin' => \App\Http\Middleware\socialAdmin::class,
         'superAdmin' => \App\Http\Middleware\superAdmin::class,
+        'privation' => \App\Http\Middleware\Privation::class,
 
     ];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreChangeRoleRequest;
+use App\Http\Requests\UpdateChangeRoleRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -26,6 +27,18 @@ class ChangeRoleController extends Controller
         toast('Role Created', 'success');
 
         return back();
+    }
+
+    public function update(UpdateChangeRoleRequest $request, $id)
+    {
+
+        $data = $request->validated();
+
+        User::where('id', $id)->update($data);
+
+        toast('Role Updated', 'success');
+
+        return redirect()->back();
     }
     public function destroy(string $id)
     {

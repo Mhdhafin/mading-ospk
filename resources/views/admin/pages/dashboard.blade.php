@@ -131,4 +131,5 @@
             </tbody>
         </table>
     </div>
+    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
 @endsection

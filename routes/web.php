@@ -36,6 +36,7 @@ Route::get('/', function () {
     $profile = Profile::first();
     $visimisi = VisiMisi::get();
     $faq = Faq::get();
+
     $post = Post::paginate(3);
 
     return view('pages.home', compact('hero', 'profile', 'visimisi', 'faq', 'post'));
@@ -50,7 +51,7 @@ Route::get('/about', function () {
     $profile = Profile::first();
     $structure = Structure::with('employees')->get();
     $testimonal = Testimonal::get();
-    return view('pages.about', compact('profile', 'structure', 'testimonal'));
+    return view('pages.about', compact('profile',  'structure', 'testimonal'));
 });
 
 Route::get('/blog', function () {
@@ -115,10 +116,13 @@ Route::delete('/users/{id}', [AdminController::class, 'destroyUser']);
 Route::get('/profile', [AdminController::class, 'edit'])->name('profile');
 Route::put('/profile/edit/{id}', [AdminController::class, 'update']);
 // Authentication
+
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('registerPost');
+
 Route::get('/logout/{id}', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 

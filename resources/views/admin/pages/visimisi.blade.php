@@ -155,7 +155,7 @@
             }
         </script>
     @endpush
-    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
     <script>
         document.getElementById('delete').addEventListener('click', function(e) {
             e.preventDefault();
@@ -175,5 +175,5 @@
                 }
             });
         });
-    </script> --}}
+    </script>
 @endsection

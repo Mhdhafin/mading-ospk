@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class StoreFaqRequest extends FormRequest
 {
@@ -11,8 +12,14 @@ class StoreFaqRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        if (!Gate::any(['postsAdmin', 'superAdmin'])) {
+            return false;
+        } else {
+
+            return true;
+        }
     }
+
 
     /**
      * Get the validation rules that apply to the request.

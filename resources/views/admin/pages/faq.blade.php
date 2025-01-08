@@ -122,7 +122,7 @@
                                             <label class="block mb-1 text-sm text-slate-700">
                                                 Question
                                             </label>
-                                            <input type="text" name="question" required value=""
+                                            <input type="text" name="question" required value="{{ $item->question }}"
                                                 class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
                                                 placeholder="Enter your text" />
                                             @error('question')
@@ -135,7 +135,7 @@
                                             <label class="block mb-1 text-sm text-slate-700">
                                                 Answer
                                             </label>
-                                            <input type="text" name="answer" required value=""
+                                            <input type="text" name="answer" required value="{{ $item->answer }}"
                                                 class="w-full h-10 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
                                                 placeholder="Enter the email" />
                                             @error('answer')
@@ -273,7 +273,7 @@
     @endpush
 
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
     <script>
         document.getElementById('delete').addEventListener('click', function(e) {
             e.preventDefault();
